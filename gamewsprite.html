@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Steeplechase w Sprites</title>
+    <style>
+      #horse {
+        position: absolute;
+        left: 0;
+        top: 150px;
+      }
+      .horse {
+        fill: red;
+      }
+
+      .fence {
+        position: absolute;
+        /* transform-origin: bottom left; */
+        left: 100vw;
+        top: 155px;
+      }
+      .fence_move {
+        animation: fence_kf 4s linear infinite;
+      }
+
+      .second_fence {
+        transform: translateX(10vw);
+        animation-delay: 1s;
+        /* animation-delay: var(--delay); */
+      }
+
+      @keyframes fence_kf {
+        0% {
+          transform: translateX(0vw);
+        }
+        100% {
+          transform: translateX(-106vw);
+        }
+      }
+
+      .collision {
+        fill: black;
+        color: black;
+      }
+
+      .jump {
+        animation: jump_kf 1.5s ease;
+      }
+
+      @keyframes jump_kf {
+        0% {
+          top: 150px;
+        }
+        50% {
+          top: 20px;
+        }
+        100% {
+          top: 150px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg id="horse" height="100" width="100">
+      <circle class="horse" cx="50" cy="50" r="30" stroke-width="3" />
+    </svg>
+
+    <svg class="fence" height="100" width="100">
+      <circle cx="50" cy="50" r="25" stroke-width="3" fill="green" />
+    </svg>
+    <svg class="fence second_fence" height="100" width="100">
+      <circle cx="50" cy="50" r="25" stroke-width="3" fill="blue" />
+    </svg>
+
+    <h5 id="time"></h5>
+    <button data-action="start">Start</button>
+    <button data-action="stop">Stop</button>
+
+    <script src="gamewsprite.js"></script>
+  </body>
+</html>
