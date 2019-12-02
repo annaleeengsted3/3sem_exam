@@ -9,7 +9,7 @@
       #horse {
         position: absolute;
         left: 0;
-        top: 150px;
+        top: 340px;
       }
       .horse {
         fill: red;
@@ -17,18 +17,17 @@
 
       .fence {
         position: absolute;
+        background-image: url("img/bush.png");
+        background-size: 100%;
+        width: 50px;
+        height: 40px;
         /* transform-origin: bottom left; */
         left: 100vw;
-        top: 155px;
+        top: 370px;
+        animation: fence_kf 4s linear 1;
       }
       .fence_move {
-        animation: fence_kf 4s linear infinite;
-      }
-
-      .second_fence {
-        transform: translateX(10vw);
-        animation-delay: 1s;
-        /* animation-delay: var(--delay); */
+        animation: fence_kf 4s linear 1;
       }
 
       @keyframes fence_kf {
@@ -51,32 +50,40 @@
 
       @keyframes jump_kf {
         0% {
-          top: 150px;
+          transform: translateY(0vh);
         }
         50% {
-          top: 20px;
+          transform: translateY(-20vh);
         }
         100% {
-          top: 150px;
+          transform: translateY(0vh);
         }
+      }
+
+      #popup {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        background-color: rgba(85, 85, 85, 0.38);
+        left: 0;
+        top: 0;
+        display: grid;
+        justify-items: center;
+        align-items: center;
       }
     </style>
   </head>
   <body>
+    <section id="popup">
+      <button id="start" data-action="start">Start</button>
+      <button id="stop" data-action="stop">Stop</button>
+    </section>
+
+    <h5 id="time">00:00</h5>
+
     <svg id="horse" height="100" width="100">
       <circle class="horse" cx="50" cy="50" r="30" stroke-width="3" />
     </svg>
-
-    <svg class="fence" height="100" width="100">
-      <circle cx="50" cy="50" r="25" stroke-width="3" fill="green" />
-    </svg>
-    <svg class="fence second_fence" height="100" width="100">
-      <circle cx="50" cy="50" r="25" stroke-width="3" fill="blue" />
-    </svg>
-
-    <h5 id="time"></h5>
-    <button data-action="start">Start</button>
-    <button data-action="stop">Stop</button>
 
     <script src="gamewsprite.js"></script>
   </body>
