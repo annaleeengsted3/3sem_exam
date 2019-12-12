@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>The Grand National: Steeplechase</title>
+    <style>
+      #game {
+        position: relative;
+        width: 80vw;
+        height: 45vw;
+        background-image: url("game_img/bg.svg");
+        background-size: cover;
+        align-self: center;
+        justify-self: center;
+        overflow: hidden;
+        border: 10px solid #dc5f12;
+        /* UNCOMMENT THIS WHEN DONE: */
+        /* filter: blur(2px); */
+      }
+      .fade_in {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        display: grid;
+        background-image: url("game_img/background.png");
+        opacity: 0;
+        transition: opacity 2.5s ease;
+      }
+      body {
+        margin: 0;
+        background-color: black;
+      }
+
+      #horse {
+        position: absolute;
+        left: 30%;
+        top: 60%;
+        width: 15vw;
+        height: 15vw;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+      }
+      .horse_sprite {
+        width: 100%;
+        height: 100%;
+        background-image: url("game_img/running.svg");
+        background-size: 600% 100%;
+        animation: horse_kf 0.45s steps(6) infinite;
+      }
+
+      .horse_jumping {
+        background-image: url("game_img/jumping.svg");
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        justify-self: center;
+      }
+
+      .horse_sprite,
+      .horse_jumping,
+      .horse_hitbox {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+      }
+
+      .horse_hitbox {
+        position: absolute;
+        width: 40%;
+        height: 40%;
+        border-radius: 50%;
+        border: 2px solid red;
+        align-self: center;
+        justify-self: center;
+        margin-left: 10%;
+        margin-bottom: 20%;
+      }
+
+      @keyframes horse_kf {
+        0% {
+          background-position: 0% 0%;
+        }
+
+        100% {
+          background-position: -600% 0%;
+        }
+      }
+
+      .fence {
+        position: absolute;
+        background-image: url("game_img/fence1.svg");
+        background-size: cover;
+        width: 8vw;
+        height: 8vw;
+        left: 90vw;
+        top: 73%;
+        animation: fence_kf 4s linear 1;
+      }
+      /* .fence_move {
+        animation: fence_kf 4s linear 1;
+      } */
+
+      @keyframes fence_kf {
+        0% {
+          transform: translateX(0vw);
+        }
+        100% {
+          transform: translateX(-100vw);
+        }
+      }
+
+      .collision {
+        transform: rotate(180deg);
+      }
+
+      .jump {
+        animation: jump_kf 1.5s ease;
+      }
+
+      @keyframes jump_kf {
+        0% {
+          transform: translateY(0%);
+        }
+        50% {
+          transform: translateY(-40%);
+        }
+        100% {
+          transform: translateY(0%);
+        }
+      }
+      .bushes {
+        position: absolute;
+        top: 13%;
+        background: url("game_img/bg_bushes.svg") repeat-x;
+        width: 160vw;
+        height: 20vw;
+        /* height: 560px;
+        width: 5076px; */
+        animation-fill-mode: backwards;
+      }
+
+      .middle {
+        position: absolute;
+        top: 20%;
+        background: url("game_img/midlayer.svg") repeat-x;
+        width: 160vw;
+        height: 15vw;
+        /* animation: parallax 15s linear infinite; */
+      }
+
+      .white_fence {
+        position: absolute;
+        top: 50%;
+        background: url("game_img/white_fence.svg") repeat-x;
+        width: 160vw;
+        height: 3vw;
+        /* animation: parallax 12s linear infinite; */
+        /* animation-fill-mode: both; */
+      }
+
+      @keyframes parallax {
+        from {
+          transform: translateX(0vw);
+        }
+        to {
+          transform: translateX(-80vw);
+        }
+      }
+
+      #popup {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-image: url("game_img/start.jpg");
+        background-size: cover;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+      }
+
+      .start_horse {
+        /* background-image: url("game_img/jumping.svg");
+        background-size: cover; */
+        width: 35vw;
+        height: 35vw;
+        position: absolute;
+        right: -3vw;
+        bottom: -9vw;
+        /* transform: scaleX(-1); */
+      }
+      .game_info {
+        background-color: rgba(218, 218, 218, 0.767);
+        border: 8px solid #123923;
+        width: 40vw;
+        height: 25vw;
+        border-radius: 5px;
+      }
+      .ui {
+        position: absolute;
+        background-image: url("game_img/game_ui.svg");
+        background-size: cover;
+        width: 24vw;
+        height: 8vw;
+        right: 0;
+      }
+      #time {
+        position: absolute;
+        right: 11vw;
+        top: 3vw;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fade_in">
+      <section id="game">
+        <div class="bushes"></div>
+        <div class="middle"></div>
+        <div class="white_fence"></div>
+
+        <div id="horse">
+          <div class="horse_sprite"></div>
+          <div class="horse_jumping"></div>
+          <div class="horse_hitbox"></div>
+        </div>
+        <div class="ui">
+          <h5 id="time">00:00</h5>
+        </div>
+
+        <article id="gameover"></article>
+        <section id="popup">
+          <div class="start_horse"></div>
+          <h1>The Grand National Steeplechase</h1>
+          <article class="game_info">
+            <button id="start" data-action="start">Start</button>
+          </article>
+        </section>
+      </section>
+    </div>
+    <script src="steeplechase_game.js"></script>
+  </body>
+</html>

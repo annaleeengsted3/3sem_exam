@@ -3,6 +3,8 @@
 // let by = [, "", "København", "Svendbårg", "HoltE"];
 
 // let gevinst = [, "", "100kr", "50kr", "45kr"];
+get();
+
 function get() {
   fetch("https://dantoto-1f71.restdb.io/rest/brugere", {
     method: "get",
@@ -15,7 +17,7 @@ function get() {
     .then(e => e.json())
     .then(spillere => {
       console.log(spillere);
-      visSpiller();
+      //visSpiller();
     });
 }
 let vindere = [

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>horse sprite</title>
+    <style>
+      #horse {
+        background-image: url("img/running.svg");
+        background-size: 600% 100%;
+        width: 20vw;
+        height: 20vw;
+        position: absolute;
+        top: 5vw;
+        left: 5vw;
+        animation: horse_kf 0.45s steps(6) infinite;
+      }
+      @keyframes horse_kf {
+        0% {
+          background-position: 0% 0%;
+        }
+
+        100% {
+          background-position: -600% 0%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="horse"></div>
+  </body>
+</html>
