@@ -31,21 +31,41 @@ function showTab(tabs) {
 }
 
 function nextPrev(tabs) {
-  // This function displays the correct "tab" depending on which button you click.
-  let x = document.querySelectorAll(".tab");
-
-  if (tabs == 1 && !validateForm()) return false;
-
-  x[currentTab].style.display = "none";
-
-  currentTab = currentTab + tabs;
-
-  if (currentTab >= x.length) {
-    document.querySelector("#regForm").submit();
-    return false;
+  const bn = document.querySelector("#brugernavn");
+  const pw = document.querySelector("#password");
+  const em = document.querySelector("#email");
+  const by = document.querySelector("#by");
+  let valid = true;
+  if (currentTab === 0) {
+    if (!bn.validity.valid || !pw.validity.valid) {
+      valid = false;
+    }
+  }
+  if (currentTab === 1) {
+    if (!email.validity.valid || !by.validity.valid) {
+      valid = false;
+    }
   }
 
-  showTab(currentTab);
+  if (valid) {
+    // This function displays the correct "tab" depending on which button you click.
+    let x = document.querySelectorAll(".tab");
+
+    if (tabs == 1 && !validateForm()) return false;
+
+    x[currentTab].style.display = "none";
+
+    currentTab = currentTab + tabs;
+
+    if (currentTab >= x.length) {
+      document.querySelector("#regForm").submit();
+      return false;
+    }
+
+    showTab(currentTab);
+  } else {
+    document.querySelector("form").reportValidity();
+  }
 }
 // VALIDATION - Checks the input fields, if they are empty it will return false.
 

@@ -11,8 +11,13 @@
   </head>
   <body>
     <header>
+      <div class="flest"><h1>Flest</h1></div>
+      <div class="h1">
+        <h1 id="string-placeholder"></h1>
+      </div>
       <p class="forward">Videre til</p>
       <img src="img/dantoto-white.svg" />
+      <span class="danskespil">-En del af danske spil</span>
     </header>
     <!-- <section id="banner">
       <div id="headlinewrap">
@@ -33,7 +38,7 @@
         </article>
 
         <article id="game">
-          <a href="#"><img src="img/spil_test.png" alt="spil"/></a>
+          <a href="#"><img src="img/spilbaggrund.png" alt="spil"/></a>
         </article>
       </section>
       <section id="center_column">
@@ -54,14 +59,17 @@
             <div class="tabcontainer">
               <div class="tab">
                 <label for="brugernavn">Brugernavn</label>
-                <input id="brugernavn" name="brugernavn" oninput="this.className = ''" />
+                <input id="brugernavn" required pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" name="brugernavn" oninput="this.className = ''" />
+                <span class="informer">Skal indholde 2-20 karakterer</span>
                 <label for="password">Kodeord:</label>
-                <input type="password" id="password" name="password" oninput="this.className = ''" />
+                <input type="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required id="password" name="password" oninput="this.className = ''" />
+                <span class="informer">Skal indholde minimum 8 karakterer, heraf minimum et stort bogstav og et tal.</span>
               </div>
 
               <div class="tab">
                 <label for="email">E-mail:</label>
-                <input id="email" name="email" oninput="this.className = ''" />
+                <input id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required oninput="this.className = ''" />
+                <span class="informer">Skal være en valid e-mail addresse</span>
                 <label for="by">By:</label>
                 <input id="by" name="by" type="text" oninput="this.className = ''" />
               </div>
@@ -147,6 +155,7 @@
     <script src="nextrace.js"></script>
     <script src="recentwinners.js"></script>
     <script src="accordion.js"></script>
+    <script src="headline.js"></script>
     <!-- <script src="headline.js"></script> -->
   </body>
 </html>

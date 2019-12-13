@@ -33,19 +33,34 @@ main {
 
 #game {
   flex-grow: 1;
-  margin-top: 2vw;
+  /* margin-top: 2vw; */
 }
 
 /* HEADER */
 header {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   width: 100%;
   /* height: 100px; */
   background-color: #ce652c;
 }
-
+.flest {
+  grid-column: 1;
+  grid-row: 1;
+  color: var(--danWhite);
+}
+.h1 {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+}
+.danskespil {
+  grid-column: 4;
+  justify-self: end;
+  margin-right: 2rem;
+  color: white;
+}
 header img {
   width: 100%;
   grid-column: 2;
@@ -69,6 +84,27 @@ header img {
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+.typing {
+  width: calc(var(--string_l) * 1ch);
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 4s steps(var(--string_l)) forwards;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  10% {
+    width: calc(var(--string_l) * 1ch);
+  }
+  90% {
+    width: calc(var(--string_l) * 1ch);
+  }
+  100% {
+    width: 0;
+  }
 }
 /* FORM */
 #maingridcontainer {
@@ -111,7 +147,6 @@ h2 {
 .opret {
   text-align: center;
   color: white;
-  padding-top: 20px;
 }
 
 /* FORM */
@@ -130,7 +165,7 @@ label {
 
 input {
   padding: 10px;
-  width: 90%;
+  width: 100%;
   font-size: 17px;
   border: 1px solid #aaaaaa;
   -webkit-box-shadow: 0px 7px 8px -6px rgba(0, 0, 0, 0.59);
@@ -170,7 +205,6 @@ input.invalid {
 .formButtons {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  margin-top: 40px;
 }
 .prevBtn {
   margin-top: 40px;
@@ -275,7 +309,6 @@ input.invalid {
   text-align: center;
 }
 .nextrace_border {
-  justify-self: center;
   padding: 2vw;
   border: 3px solid orange;
   /* grid-row: 2; */
@@ -426,6 +459,7 @@ footer {
   .formhead {
     /* width: 350px;
     height: 120px; */
+    padding: 3vh 0 3vh 0;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: var(--danOrange);
@@ -456,7 +490,7 @@ footer {
 
   input {
     padding: 10px;
-    width: 90%;
+    width: 100%;
     font-size: 17px;
     font-family: Raleway;
     border: 1px solid #aaaaaa;
@@ -495,8 +529,6 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    margin-top: 40px;
-    /* margin-left: 20px; */
   }
   .nextBtn {
     grid-column: 2;
@@ -536,7 +568,6 @@ footer {
     /* justify-self: center; */
   }
   .nextrace_border {
-    justify-self: center;
     border: 3px solid orange;
     /* grid-row: 1; */
     /* width: 355px;
@@ -583,27 +614,32 @@ footer {
 ********************DESKTOP******************** 
 **************************************************/
 
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: 100px) {
     header {
       display: grid;
-      grid-template-columns: 400px 600px 1fr 1fr;
-      grid-template-rows: 30px 1fr 1fr;
+      grid-template-columns: auto 600px 1fr 1fr;
+
       justify-content: space-between;
       width: 100%;
       height: 10vh;
     }
-    header h1 {
-      grid-column: 1;
-      grid-row: 2;
-      color: var(--danWhite);
-      font-size: 3rem;
-      margin-left: 30px;
-    }
+
     header img {
       grid-column: 4;
       grid-row: 2;
       justify-self: end;
       width: 150px;
+    }
+    .flest {
+      grid-column: 1;
+      grid-row: 2;
+      margin-left: 1rem;
+    }
+    .h1 {
+      grid-column: 2;
+      grid-row: 2;
+      justify-self: left;
+      margin-left: 1rem;
     }
     .forward {
       grid-column: 4;
@@ -631,6 +667,7 @@ footer {
     }
 
     .formwrapper {
+      margin-top: 3rem;
       grid-column: 2;
       /* grid-row: 2 / -2; */
       /* min-width: 350px;
@@ -661,7 +698,11 @@ footer {
       text-transform: uppercase;
       font-size: 14px;
     }
+    .informer {
+      font-size: 0.8rem;
 
+      color: grey;
+    }
     /* FORM */
     #regForm {
       /* background-color: var(--danWhite); */
@@ -670,10 +711,11 @@ footer {
 
     input {
       padding: 10px;
-      width: 90%;
+      width: 100%;
       font-size: 17px;
       font-family: Raleway;
       border: 1px solid #aaaaaa;
+      display: block;
     }
     .checkbox {
       text-align: left;
@@ -720,8 +762,6 @@ footer {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       grid-template-rows: 1fr 1fr 1fr;
-      margin-top: 40px;
-      /* margin-left: 20px; */
     }
     .formButtons p {
       grid-row: 2;
@@ -734,8 +774,9 @@ footer {
       background-color: var(--danOrange);
       color: var(--danWhite);
       border-radius: 3px;
-      /* width: 120px;
-      height: 40px; */
+      height: 3vw;
+      width: 7vw;
+      margin-top: 2rem;
     }
     .logIn {
       grid-column: 2;
@@ -743,9 +784,9 @@ footer {
       background-color: #fc7b2c;
       color: var(--danWhite);
       border-radius: 3px;
-      /* width: 120px;
-      height: 40px; */
       margin-top: 0;
+      height: 3vw;
+      width: 7vw;
     }
     .prevBtn {
       grid-column: 2;
@@ -753,43 +794,38 @@ footer {
       background-color: #fc7b2c;
       color: var(--danWhite);
       border-radius: 3px;
-      /* width: 120px;
-      height: 40px; */
+      height: 3vw;
+      width: 7vw;
       margin-top: 0;
     }
     /* NEXT RACE WORDPRESS*/
 
     #nextrace_container {
-      /* display: grid;
-      grid-template-rows: repeat(4, 1fr); */
-      /* grid-row: 1 / span 3; */
       grid-column: 1;
-      margin-top: 0;
       padding: 2vw;
-      /* justify-self: start; */
-      /* min-width: 390px;
-      min-height: 459.94px; */
       margin: 0;
     }
     #nextrace_container h3 {
       grid-row: 1;
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
     }
-    /* .nextrace_border {
-      width: 275px;
-      height: 375px;
-    } */
+    .nextrace_border {
+      padding-bottom: 8vh;
+    }
 
     .horsetime {
       width: 30%;
+      margin-top: 2rem;
     }
     #countdown {
       color: var(--danWhite);
-      font-size: 1.5rem;
+      font-size: 2rem;
+      margin-top: 2rem;
     }
     #location {
       font-size: 1.5rem;
+      margin-top: 4rem;
     }
     .spilnuBtn {
       height: 2vw;
@@ -842,7 +878,7 @@ footer {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       width: 100%;
-      /* height: 100px; */
+      background-color: white;
 
       justify-items: center;
     }
