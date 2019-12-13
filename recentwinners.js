@@ -20,28 +20,6 @@ function get() {
       visSpillere(spillere);
     });
 }
-let vindere = [
-  {
-    navn: "NielsNielsen69",
-    by: "Århus",
-    gevinst: "500kr"
-  },
-  {
-    navn: "SusanneSavannen12",
-    by: "Aalborg",
-    gevinst: "200kr"
-  },
-  {
-    navn: "MangoMorten47",
-    by: "København",
-    gevinst: "100kr"
-  },
-  {
-    navn: "JægerJesper09",
-    by: "Svendbårg",
-    gevinst: "50kr"
-  }
-];
 
 let i = 0; // the index of the current item to show
 
