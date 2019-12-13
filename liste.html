@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Liste</title>
+    <link rel="stylesheet" href="liste.css" />
+  </head>
+  <body>
+    <div id="popup">
+      <div id="luk">
+        <button>✕</button>
+      </div>
+      <div id="indhold">
+        <form class="login-form">
+          <p>Username: admin</p>
+          <p>Password: 12345</p>
+          <input type="text" placeholder="username" name="username" />
+          <input type="password" placeholder="password" name="password" />
+          <button type="submit" class="admin-login">Login</button>
+          <!-- <div class="admin-login">login</div> -->
+        </form>
+      </div>
+    </div>
+
+    <main>
+      <section id="navigation">
+        <div class="sortingnav">
+          <h2>Sorter efter</h2>
+          <button class="sort btn" data-sort="gevinst">Samlet gevinst</button>
+          <button class="sort btn" data-sort="brugernavn">Brugernavn</button>
+        </div>
+        <div class="filternav">
+          <h2 class="filterh">Filtrér</h2>
+          <button class="filter btn" data-filter="vundet">Vundet</button>
+          <button class="filter btn" data-filter="ikke_vundet">Ikke vundet</button>
+          <button class="filter btn" data-filter="nej_terms">Nej til terms</button>
+          <button class="filter btn" data-filter="ja_terms">Ja til terms</button>
+          <button class="filter valgt btn" data-filter="alle">Alle spillere</button>
+        </div>
+        <div class="adminnav">
+          <h2>Admin login</h2>
+          <button class="login">Klik for login</button>
+        </div>
+      </section>
+
+      <section id="edit_form">
+        <form class="formEdit hide">
+          <h2></h2>
+          <h3>Rediger bruger</h3>
+          <div class="newuser_container">
+            <label for="ny_brugernavn">Brugernavn:</label>
+            <input type="text" class="form-control" id="ny_brugernavn" name="brugernavn" placeholder="&nbsp;" required />
+            <!-- <label for="ny_password">Password</label> -->
+            <input type="hidden" class="form-control" id="ny_password" name="password" placeholder="&nbsp;" required />
+            <!-- <label for="ny_e_mail">e-mail:</label> -->
+            <input type="hidden" class="form-control" id="ny_e_mail" name="email" placeholder="e-mail goes here" required />
+            <label for="ny_by">By:</label>
+            <input type="text" class="form-control" id="ny_by" name="by" placeholder="&nbsp;" required />
+            <label for="ny_gevinst">Gevinst:</label>
+            <input type="text" class="form-control" id="ny_gevinst" name="kr_vundet" placeholder="&nbsp;" required />
+            <input type="hidden" name="_id" />
+            <input type="hidden" name="terms" />
+          </div>
+          <button type="submit">Rediger denne bruger</button>
+        </form>
+      </section>
+
+      <section id="liste">
+        <div class="users"></div>
+        <template>
+          <article class="singleUser">
+            <h3 class="brugernavn"></h3>
+            <p class="by"></p>
+            <p class="kr_vundet"></p>
+            <div class="adminBtn">
+              <button class="editBtn">Rediger bruger</button>
+              <button class="deleteBtn">Slet bruger</button>
+            </div>
+          </article>
+        </template>
+      </section>
+    </main>
+    <script src="liste.js"></script>
+  </body>
+</html>

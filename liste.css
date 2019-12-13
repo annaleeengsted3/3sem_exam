@@ -1,0 +1,51 @@
+body {
+  background-image: url(img/background.png);
+  background-size: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+/**************** NAVIGATION/BUTTONS ****************/
+
+#navigation {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-self: center;
+}
+
+/**************** LISTE VIEW ****************/
+
+.users {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 5vw;
+  grid-row-gap: 2vw;
+}
+
+/**************** ADMIN LOGIN POPUP ****************/
+
+#popup {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.36);
+  overflow: scroll;
+  display: none;
+  margin: 0;
+}
+
+#indhold {
+  min-height: 50vh;
+  background-color: white;
+  width: 60vw;
+  margin: 4rem auto;
+  border: 1px black solid;
+}
+
+.adminBtn {
+  display: none;
+}
