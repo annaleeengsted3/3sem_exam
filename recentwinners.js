@@ -17,7 +17,7 @@ function get() {
     .then(e => e.json())
     .then(spillere => {
       console.log(spillere);
-      //visSpiller();
+      visSpillere(spillere);
     });
 }
 let vindere = [
@@ -45,13 +45,19 @@ let vindere = [
 
 let i = 0; // the index of the current item to show
 
-setInterval(function() {
-  const vinder = vindere[i];
-  // setInterval makes it run repeatedly
-  document.getElementById("spiller").innerHTML = `Vores spiller 
-  ${vinder.navn}`;
-  document.getElementById("bynavn").innerHTML = `fra ${vinder.by}`;
-  document.getElementById("gevinst").innerHTML = `har lige vundet ${vinder.gevinst}`; // get the item and increment
-  i++;
-  if (i == vindere.length) i = 0; // reset to first element if you've reached the end
-}, 10000);
+function visSpillere(spillere) {
+  setInterval(function() {
+    const vinder = spillere[i];
+    // setInterval makes it run repeatedly
+    if (vinder.kr_vundet > 0 && vinder.terms == true) {
+      document.querySelector("#spiller").innerHTML = `Vores spiller 
+      ${vinder.brugernavn}`;
+      document.querySelector("#bynavn").innerHTML = `fra ${vinder.by}`;
+      document.querySelector("#gevinst").innerHTML = `har lige vundet ${vinder.kr_vundet} kr.`;
+    }
+
+    // get the item and increment
+    i++;
+    if (i == spillere.length) i = 0; // reset to first element if you've reached the end
+  }, 3000);
+}

@@ -1,0 +1,43 @@
+#quickguide_container img {
+  max-width: 88%;
+}
+
+.accon button {
+  width: 70%;
+}
+
+#quickguide_container p {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+}
+
+.accordion {
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  transition: 0.4s;
+  background: transparent;
+}
+
+.accon {
+  margin-bottom: 50px;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: transparent;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  text-align: center;
+  line-height: 20px;
+}
+
+#quickguide_container {
+  text-align: center;
+}
