@@ -2,6 +2,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 img {
@@ -14,6 +15,25 @@ img {
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+}
+
+/*Main grid containers*/
+main {
+  overflow-x: hidden;
+}
+
+#left_column {
+  display: flex;
+  flex-direction: column;
+}
+
+.nextrace_container {
+  flex-grow: 3;
+}
+
+#game {
+  flex-grow: 1;
+  margin-top: 2vw;
 }
 
 /* HEADER */
@@ -673,6 +693,7 @@ footer {
     .tab {
       /* max-width: 250px; */
       margin: 0 auto;
+
       display: none;
       text-align: left;
     }
@@ -808,13 +829,13 @@ footer {
     }
 
     /* LINK TIL SPIL BOKS */
-    #game {
+    /* #game {
       background-image: url(img/spil_test.png);
       background-size: cover;
       background-repeat: no-repeat;
       grid-column: 1;
       grid-row: 3;
-    }
+    } */
 
     /*FOOTER*/
     footer {
