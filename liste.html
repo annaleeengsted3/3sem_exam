@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Liste</title>
     <link rel="stylesheet" href="liste.css" />
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Roboto:300,400&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div id="popup">
@@ -13,9 +14,9 @@
         <button>✕</button>
       </div>
       <div id="indhold">
+        <p>Username: admin</p>
+        <p>Password: 12345</p>
         <form class="login-form">
-          <p>Username: admin</p>
-          <p>Password: 12345</p>
           <input type="text" placeholder="username" name="username" />
           <input type="password" placeholder="password" name="password" />
           <button type="submit" class="admin-login">Login</button>
@@ -25,7 +26,7 @@
     </div>
 
     <main>
-      <section id="navigation">
+      <section id="button_overview">
         <div class="sortingnav">
           <h2>Sorter efter</h2>
           <button class="sort btn" data-sort="gevinst">Samlet gevinst</button>
@@ -47,23 +48,22 @@
 
       <section id="edit_form">
         <form class="formEdit hide">
-          <h2></h2>
-          <h3>Rediger bruger</h3>
+          <h2>Rediger bruger</h2>
           <div class="newuser_container">
-            <label for="ny_brugernavn">Brugernavn:</label>
+            <label for="ny_brugernavn">Brugernavn</label>
             <input type="text" class="form-control" id="ny_brugernavn" name="brugernavn" placeholder="&nbsp;" required />
             <!-- <label for="ny_password">Password</label> -->
             <input type="hidden" class="form-control" id="ny_password" name="password" placeholder="&nbsp;" required />
             <!-- <label for="ny_e_mail">e-mail:</label> -->
             <input type="hidden" class="form-control" id="ny_e_mail" name="email" placeholder="e-mail goes here" required />
-            <label for="ny_by">By:</label>
+            <label for="ny_by">By</label>
             <input type="text" class="form-control" id="ny_by" name="by" placeholder="&nbsp;" required />
-            <label for="ny_gevinst">Gevinst:</label>
+            <label for="ny_gevinst">Gevinst</label>
             <input type="text" class="form-control" id="ny_gevinst" name="kr_vundet" placeholder="&nbsp;" required />
             <input type="hidden" name="_id" />
             <input type="hidden" name="terms" />
+            <button type="submit">Rediger denne bruger</button>
           </div>
-          <button type="submit">Rediger denne bruger</button>
         </form>
       </section>
 
