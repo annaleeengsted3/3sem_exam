@@ -154,9 +154,9 @@ function gameOver() {
   });
   document.querySelector("body").removeEventListener("keydown", checkKey);
   document.querySelector("body").removeEventListener("keyup", resetAnimation);
-  // document.querySelector(".bushes").style.animationPlayState = `paused`;
-  // document.querySelector(".middle").style.animationPlayState = `paused`;
-  // document.querySelector(".white_fence").style.animationPlayState = `paused`;
+  document.querySelector(".bushes").style.animationPlayState = `paused`;
+  document.querySelector(".middle").style.animationPlayState = `paused`;
+  document.querySelector(".white_fence").style.animationPlayState = `paused`;
 
   //TO DO: Add GAMEOVER sound
   document.querySelector(".horse_sprite").style.opacity = 0;

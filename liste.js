@@ -1,11 +1,12 @@
 "use strict";
 
-const allUsers = [];
+let allUsers = [];
 let currentList = [];
 let sortButton;
 let Filter;
 const loginForm = document.querySelector(".login-form");
 const formEdit = document.querySelector("form.formEdit");
+let admin = false;
 
 window.addEventListener("DOMContentLoaded", start);
 
@@ -15,6 +16,7 @@ function start() {
   document.querySelector(".admin-login").addEventListener("click", () => {
     event.preventDefault();
     if (loginForm.elements.username.value == "admin" && loginForm.elements.password.value == "12345") {
+      admin = true;
       adminLogin();
     }
   });
@@ -54,6 +56,7 @@ function get() {
 }
 
 function prepareObjects(users) {
+  console.log("users are:");
   console.log(users);
   users.forEach(jsonObject => {
     // Create new object with cleaned data from our prototype
@@ -68,13 +71,13 @@ function prepareObjects(users) {
     user.terms = jsonObject.terms;
 
     allUsers.push(user);
-    currentList.push(user);
+    //  currentList.push(user);
   });
   rebuildList();
 }
 
 function rebuildList() {
-  console.log("rebuild List");
+  //console.log("rebuild List");
   //filterListBy("all");
 
   // if Filter = harVundet
@@ -122,7 +125,7 @@ function setSort() {
 }
 
 function sortCurrentUsers(sortButton) {
-  currentList.sort((a, b) => {
+  allUsers.sort((a, b) => {
     let comp;
     if (sortButton == "gevinst") {
       comp = b.kr_vundet - a.kr_vundet;
@@ -132,7 +135,7 @@ function sortCurrentUsers(sortButton) {
     return comp;
   });
 
-  displayList(currentList);
+  rebuildList();
 }
 
 // FILTRERING
@@ -149,54 +152,13 @@ function setFilter() {
     elm.classList.remove("valgt");
   });
   this.classList.add("valgt");
-  console.log(Filter);
+  //console.log(Filter);
 
   rebuildList();
 
   // currentList = filtering(Filter);
   // displayList(currentList);
 }
-
-// function filtering() {
-//   let filterlist = allUsers.filter(filterGevinst);
-//   function filterGevinst(user) {
-//     if (user.kr_vundet > 0) {
-//       return true;
-//     } else if (user.kr_vundet == 0) {
-//       return false;
-//     } else {
-//       return false;
-//     }
-//   }
-//   return filterlist;
-// }
-
-// function filtering(kr_vundet) {
-//   let filterlist = allUsers.filter(filterGevinst);
-//   function filterGevinst(user) {
-//     if (kr_vundet == "alle") {
-//       return true;
-//     } else if (user.kr_vundet > 0) {
-//       return false;
-//     } else if (user.kr_vundet == 0) {
-//       return false;
-//     }
-//   }
-//   return filterlist;
-// }
-// function filtering(kr_vundet) {
-//   let filterlist = allUsers.filter(filterGevinst);
-//   function filterGevinst(user) {
-//     if (user.kr_vundet == kr_vundet || kr_vundet == "alle") {
-//       return true;
-//     } else if (user.kr_vundet > 0) {
-//       return false;
-//     } else if (user.kr_vundet == 0) {
-//       return false;
-//     }
-//   }
-//   return filterlist;
-// }
 
 function displayList(users) {
   console.log("display new list");
@@ -222,8 +184,9 @@ function displayUser(user) {
   }
 
   //delete user
+
   clone.querySelector(".deleteBtn").addEventListener("click", () => {
-    console.log(user._id);
+    //console.log(user._id);
     deleteUser(user._id);
   });
 
@@ -232,10 +195,11 @@ function displayUser(user) {
     //what happens when you pres the edit button goes here
     //first fetch, then populate a form
     //how do we fetch a single post from restdb? -->
+    event.preventDefault();
     document.querySelector(".formEdit").classList.remove("hide");
 
     fetchAndPopulate(user._id);
-    console.log("Someone clicked edit");
+    console.log(user._id);
   });
 
   // append clone to list
@@ -254,16 +218,18 @@ function close() {
 function adminLogin() {
   //... den skal kun gå videre hertil hvis brugeren har indtastet det korrekte i form
   //if username == "admin" && password == "12345" {...}
-  document.querySelectorAll(".adminBtn").forEach(adminButton => {
-    adminButton.style.display = "block";
-  });
+  if (admin == true) {
+    document.querySelectorAll(".adminBtn").forEach(adminButton => {
+      adminButton.style.display = "block";
+    });
 
-  document.querySelector("#popup").style.display = "none";
+    document.querySelector("#popup").style.display = "none";
+  }
 }
 
 //DELETE USER
 function deleteUser(_id) {
-  fetch("https://dantoto-1f71.restdb.io/rest/brugere?per_page=100" + _id, {
+  fetch("https://dantoto-1f71.restdb.io/rest/brugere/" + _id, {
     method: "delete",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -274,7 +240,7 @@ function deleteUser(_id) {
     .then(res => res.json())
     .then(data => {
       //TODO: Delete from DOM
-      console.log(`.singleUser[data-userid="${_id}"]`);
+      //console.log(`.singleUser[data-userid="${_id}"]`);
       document.querySelector(`.singleUser[data-userid="${_id}"]`).remove();
     });
 
@@ -283,7 +249,7 @@ function deleteUser(_id) {
 
 //EDIT USER
 function fetchAndPopulate(_id) {
-  fetch(`https://dantoto-1f71.restdb.io/rest/brugere?per_page=100/${_id}`, {
+  fetch(`https://dantoto-1f71.restdb.io/rest/brugere/${_id}`, {
     method: "get",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -293,7 +259,7 @@ function fetchAndPopulate(_id) {
   })
     .then(e => e.json())
     .then(users => {
-      console.log(users);
+      console.log("users in fecthAndPop " + users);
       formEdit.elements.brugernavn.value = users.brugernavn;
       formEdit.elements.email.value = users.email;
       formEdit.elements.password.value = users.password;
@@ -315,11 +281,11 @@ function put() {
     _id: formEdit.elements._id.value
   };
 
-  console.log(data);
+  // console.log(data);
 
   const postData = JSON.stringify(data);
   const superID = formEdit.elements._id.value;
-  fetch("https://dantoto-1f71.restdb.io/rest/brugere?per_page=100/" + superID, {
+  fetch("https://dantoto-1f71.restdb.io/rest/brugere/" + superID, {
     method: "put",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -341,16 +307,23 @@ function put() {
         daddy.querySelector(".kr_vundet").innerHTML = `<article>${updatedUser.brugernavn} har i alt vundet: ${updatedUser.kr_vundet} kr.`;
       }
 
-      prepareObjects(updatedUser);
-      rebuildList(updatedUser);
+      //prepareObjects(updatedUser);
+      allUsers = allUsers.map(user => {
+        if (user._id != updatedUser._id) {
+          return user;
+        } else {
+          return updatedUser;
+        }
+      });
+      rebuildList();
 
-      console.log(data);
+      // console.log(data);
     });
 }
 
 function post(data) {
   const postData = JSON.stringify(data);
-  fetch("https://dantoto-1f71.restdb.io/rest/brugere?per_page=100", {
+  fetch("https://dantoto-1f71.restdb.io/rest/brugere/", {
     method: "post",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -363,7 +336,7 @@ function post(data) {
     .then(data => {
       //getUser(data);
       cleanJSON(data);
-      console.log(data);
+      // console.log(data);
     });
 }
 
