@@ -9,19 +9,31 @@ body {
   --danGray: #383535;
 }
 
+hr {
+  border: 0;
+  height: 2px;
+  /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--danOrange), rgba(0, 0, 0, 0)); */
+  background-color: var(--danOrange);
+  margin: 2vw;
+}
+
 .hide {
   display: none;
 }
 
-/* .adminBtn {
+.adminBtn {
   display: none;
-} */
+}
 
 h2 {
   font-family: "Abril Fatface", cursive;
   color: var(--danWhite);
   letter-spacing: 3px;
   font-size: 1.3rem;
+}
+
+#liste h2 {
+  margin-left: 2vw;
 }
 
 h3 {
