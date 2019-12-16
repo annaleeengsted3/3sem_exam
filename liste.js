@@ -3,7 +3,7 @@
 let allUsers = [];
 let currentList = [];
 let sortButton;
-let Filter;
+let Filter = "ja_terms";
 const loginForm = document.querySelector(".login-form");
 const formEdit = document.querySelector("form.formEdit");
 let admin = false;
@@ -140,11 +140,11 @@ function sortCurrentUsers(sortButton) {
 
 // FILTRERING
 
-function filterListBy(filterBy) {
-  currentList = allUsers.filter(user => {
-    return true;
-  });
-}
+// function filterListBy(filterBy) {
+//   currentList = allUsers.filter(user => {
+//     return true;
+//   });
+// }
 
 function setFilter() {
   Filter = this.dataset.filter;
@@ -222,9 +222,13 @@ function adminLogin() {
     document.querySelectorAll(".adminBtn").forEach(adminButton => {
       adminButton.style.display = "block";
     });
-
-    document.querySelector("#popup").style.display = "none";
+    document.querySelectorAll(".filter").forEach(filterButton => {
+      filterButton.style.display = "inline";
+    });
+    document.querySelector(".filternav>h2").style.display = "block";
   }
+
+  document.querySelector("#popup").style.display = "none";
 }
 
 //DELETE USER

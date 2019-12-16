@@ -9,6 +9,11 @@ body {
   --danGray: #383535;
 }
 
+.filter,
+.filternav h2 {
+  display: none;
+}
+
 hr {
   border: 0;
   height: 2px;
@@ -26,9 +31,9 @@ hr {
 }
 
 h2 {
-  font-family: "Abril Fatface", cursive;
+  font-family: "Roboto", sans-serif;
   color: var(--danWhite);
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   font-size: 1.3rem;
 }
 
