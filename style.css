@@ -44,10 +44,11 @@ header {
   color: white;
 }
 main {
-  height: 95vh;
+  max-height: 95vh;
   width: 100vw;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
   grid-column-gap: 4vw;
 }
 
