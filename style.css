@@ -1,0 +1,477 @@
+:root {
+  --danOrange: #dc5f11;
+  --danYellow: #feb700;
+  --fontmain: "Roboto", sans-serif;
+  --dark: #1a1a1a;
+}
+#mobilversion {
+  display: none;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--fontmain);
+  /* background-image: url("img/pattern_background2.svg"); */
+  background-image: url("img/test2.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: black;
+}
+img {
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  height: 5vh;
+  width: 100vw;
+  /* background-color: var(--dark); */
+  display: flex;
+  justify-content: flex-end;
+}
+.danskespil {
+  grid-column: 4;
+  justify-self: end;
+  margin-right: 2rem;
+  color: white;
+}
+
+.forward {
+  grid-column: 2;
+  align-self: flex-end;
+  float: right;
+  color: white;
+}
+main {
+  height: 95vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 4vw;
+}
+
+/********** LEFT COLUMN *********/
+#left_column {
+  display: flex;
+  flex-direction: column;
+}
+
+/** NEXT RACE **/
+.nextrace_container {
+  width: 33vw;
+  display: grid;
+  margin-bottom: 2vw;
+}
+.nextrace_border {
+  padding: 2vw 4vw;
+  border: 4px solid var(--danYellow);
+  justify-self: center;
+  align-self: center;
+  color: white;
+  font-family: var(--fontmain);
+  display: grid;
+  justify-items: center;
+}
+
+.nextrace_border h3 {
+  font-size: 1.8vw;
+}
+.horsetime {
+  background-image: url("img/horse_time.png");
+  background-size: cover;
+  width: 11vw;
+  height: 6vw;
+}
+.countdown {
+  font-size: 2vw;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.location {
+  font-size: 1.5vw;
+  font-weight: 700;
+}
+
+#game {
+  width: 30vw;
+  margin-top: 2vw;
+  display: grid;
+}
+#game .bg {
+  width: 100%;
+  /* height: 100%; */
+  grid-column: 1 / 2;
+  grid-row: 1 / -1;
+}
+#game .overlay {
+  width: 100%;
+  height: 100%;
+  grid-column: 1 / 2;
+  grid-row: 1 / -1;
+  background-color: black;
+  opacity: 0.5;
+}
+#game a {
+  grid-column: 1 / 2;
+  grid-row: 1 / -1;
+  align-self: center;
+  justify-self: center;
+  font-family: var(--fontmain);
+  font-weight: 500;
+  color: white;
+  font-size: 1.8vw;
+  z-index: 5;
+  animation: pulse 1.5s infinite alternate ease;
+}
+.gratis {
+  color: var(--danYellow);
+  font-size: 2.1vw;
+}
+
+@keyframes pulse {
+  to {
+    transform: scale(1.1);
+  }
+}
+
+/********** MIDDLE COLUMN *********/
+#title {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.flest {
+  color: white;
+  font-size: 2vw;
+  text-decoration: underline;
+}
+.h1 {
+  margin: 0;
+  margin-left: 1vw;
+  font-size: 2vw;
+  color: var(--danYellow);
+}
+.typing {
+  width: calc(var(--string_l) * 1ch);
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 4s steps(var(--string_l)) forwards;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  10% {
+    width: calc(var(--string_l) * 1ch);
+  }
+  90% {
+    width: calc(var(--string_l) * 1ch);
+  }
+  100% {
+    width: 0;
+  }
+}
+
+/*** FORM ****/
+
+.formwrapper {
+  border-radius: 15px;
+  background-color: black;
+  background: linear-gradient(var(--dark), black);
+  border: 5px solid var(--dark);
+  padding-bottom: 3vw;
+  display: grid;
+}
+.formhead {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  background-color: var(--dark);
+  box-shadow: 0px 6px 5px -5px rgba(0, 0, 0, 0.75);
+  padding: 1vw 0vw;
+}
+
+h2 {
+  font-weight: 400;
+  margin: 0;
+}
+.thick {
+  color: white;
+  font-weight: 700;
+}
+.yellow {
+  color: var(--danYellow);
+}
+.opret {
+  text-align: center;
+  color: white;
+}
+
+/* FORM */
+label {
+  display: block;
+  padding: 1rem 0 0.5rem;
+  color: var(--danOrange);
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.steps {
+  text-align: center;
+  margin-top: 2vw;
+}
+
+input {
+  padding: 1vw;
+  width: 100%;
+  font-size: 17px;
+  border: 1px solid #aaaaaa;
+  opacity: 0.5;
+}
+
+input.invalid {
+  background-color: #ffdddd;
+}
+
+.tab {
+  max-width: 20vw;
+  margin: 0 auto;
+  display: none;
+  text-align: left;
+}
+
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #ffdddd;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step .active {
+  opacity: 1;
+}
+
+.step.finish {
+  background-color: var(--danOrange);
+}
+
+.formwrapper button {
+  padding: 1vw 0vw;
+  color: white;
+  font-size: 1vw;
+  justify-self: center;
+}
+
+.formButtons p {
+  margin-top: 2rem;
+  margin-bottom: -1.5rem;
+  grid-column: 2;
+  align-self: flex-end;
+}
+.nextBtn {
+  margin: 1vw 0;
+  grid-column: 2;
+  justify-self: center;
+  grid-row: 1;
+  background-color: var(--danOrange);
+  color: var(--danWhite);
+}
+
+.submitBtn {
+  justify-self: center;
+  grid-row: 1;
+  grid-column: 2;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 200;
+  background-color: var(--danOrange);
+  color: var(--danWhite);
+}
+.checkbox {
+  box-shadow: none;
+}
+.nextBtn,
+.logIn,
+.prevBtn,
+.submitBtn {
+  border: none;
+  border-radius: 3px;
+  width: 15vw;
+  font-weight: 700;
+  box-shadow: 0px 7px 8px -6px rgba(0, 0, 0, 0.59);
+  cursor: pointer;
+}
+#logIn {
+  background-color: rgb(78, 78, 78);
+  font-size: 0.5vw;
+  width: 30%;
+  padding: 0.5vw 0vw;
+  letter-spacing: 0.5px;
+}
+.disappear {
+  animation-name: disappear;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-delay: 5s;
+}
+@keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.registered {
+  color: white;
+  animation-name: fade;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#regForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.first_step {
+  display: grid;
+  justify-items: center;
+}
+.first_step input {
+  width: 100%;
+  padding: 0.5vw 0;
+}
+.informer {
+  font-size: 0.8rem;
+
+  color: grey;
+}
+.tab {
+  margin-bottom: 2vw;
+}
+.existinguser {
+  color: white;
+  margin-top: 2vw;
+  font-size: 0.8vw;
+}
+
+.prevBtn {
+  margin: 1vw 0;
+  justify-self: center;
+  background-color: rgb(78, 78, 78);
+  width: 30%;
+}
+.terms {
+  color: white;
+}
+
+/********** RIGHT COLUMN *********/
+#quickguide_container {
+  text-align: center;
+  /* background-color: var(--dark); */
+  margin: 0 auto;
+  margin-top: 2em;
+}
+.submitBtn {
+  opacity: 1;
+}
+
+#recentwinner_container {
+  color: white;
+  border-top: 3px solid white;
+  border-left: 3px solid white;
+  border-bottom: 3px solid white;
+  border-radius: 5px;
+  text-align: center;
+}
+#recentwinner_container p {
+  font-size: 0.9rem;
+  font-style: italic;
+  font-weight: 600;
+}
+.spiller {
+  font-size: 1.3rem;
+}
+.gevinst {
+  font-size: 1.8rem;
+  color: var(--danYellow);
+}
+#recentwinner_container a {
+  color: var(--danOrange);
+}
+
+/***** MEDIA QUERIES ******/
+@media only screen and (max-width: 400px) {
+  #mobilversion {
+    display: block;
+  }
+  #desktop {
+    display: none;
+  }
+  header a {
+    display: flex;
+    justify-content: flex-end;
+  }
+  header a img {
+    width: 50%;
+  }
+  main {
+    grid-template-columns: 1fr;
+    width: 100vw;
+  }
+  .nextrace_container {
+    justify-items: center;
+    width: 100%;
+  }
+
+  .flest,
+  .h1 {
+    font-size: 8vw;
+    margin-left: 3vw;
+  }
+  .nextrace_border h3,
+  .countdown,
+  .nextrace_border p,
+  .location {
+    font-size: 6vw;
+  }
+  #center_column {
+    margin: 5vw 2vw;
+  }
+  .tab {
+    max-width: 80vw;
+  }
+  .formwrapper button {
+    font-size: 1.5rem;
+  }
+  .nextBtn,
+  #logIn {
+    width: 30vw;
+  }
+  #logIn,
+  .existinguser {
+    font-size: 1rem;
+  }
+  #recentwinner_container {
+    border: 3px solid white;
+  }
+}

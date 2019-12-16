@@ -1,6 +1,36 @@
 "use strict";
 let currentTab = 0;
-showTab(currentTab);
+
+const formContent = document.querySelector("#form_template");
+const clone = formContent.content.cloneNode(true);
+
+const headlineContent = document.querySelector("#headline_template");
+const headlineClone = headlineContent.content.cloneNode(true);
+
+window.onresize = checkWindow();
+
+checkWindow();
+function checkWindow() {
+  // console.log(window.innerWidth);
+  const windoWidth = window.innerWidth;
+  if (windoWidth < 400) {
+    console.log("inserted for under 400px");
+    document.querySelector(".form_desktop").innerHTML = "";
+    document.querySelector(".title_desktop").innerHTML = "";
+    document.querySelector(".form_mobil").appendChild(clone);
+    document.querySelector(".title_mobil").appendChild(headlineClone);
+    showTab(currentTab);
+  } else {
+    console.log("inserted for over 400px");
+    document.querySelector(".form_mobil").innerHTML = "";
+    document.querySelector(".title_mobil").innerHTML = "";
+    document.querySelector(".form_desktop").appendChild(clone);
+    document.querySelector(".title_desktop").appendChild(headlineClone);
+    showTab(currentTab);
+  }
+}
+
+//den følgende kode til formen er fra https://www.w3schools.com/howto/howto_js_form_steps.asp?fbclid=IwAR33EcBSoh9tETxGCUSB-6GB8qufM22nCY2NPUsn-CqOd2le3F8MuUvAy9M
 
 function showTab(tabs) {
   // This function will display the specified tab of the form
