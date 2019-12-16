@@ -70,7 +70,7 @@ function nextPrev(tabs) {
     }
   }
   if (currentTab === 1) {
-    if (!email.validity.valid || !by.validity.valid) {
+    if (!em.validity.valid || !by.validity.valid) {
       valid = false;
     }
   }
