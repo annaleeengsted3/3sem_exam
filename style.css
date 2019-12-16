@@ -472,6 +472,13 @@ input.invalid {
   .existinguser {
     font-size: 1rem;
   }
+  #game {
+    width: 100vw;
+  }
+  #game a,
+  .gratis {
+    font-size: 7vw;
+  }
   #recentwinner_container {
     border: 3px solid white;
   }

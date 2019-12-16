@@ -1,18 +1,16 @@
 "use strict";
 let currentTab = 0;
-
-const formContent = document.querySelector("#form_template");
-const clone = formContent.content.cloneNode(true);
-
-const headlineContent = document.querySelector("#headline_template");
-const headlineClone = headlineContent.content.cloneNode(true);
-
-window.onresize = checkWindow();
+window.addEventListener("resize", checkWindow);
+//window.onresize = checkWindow();
 
 checkWindow();
 function checkWindow() {
   // console.log(window.innerWidth);
   const windoWidth = window.innerWidth;
+  const formContent = document.querySelector("#form_template");
+  const clone = formContent.content.cloneNode(true);
+  const headlineContent = document.querySelector("#headline_template");
+  const headlineClone = headlineContent.content.cloneNode(true);
   if (windoWidth < 400) {
     console.log("inserted for under 400px");
     document.querySelector(".form_desktop").innerHTML = "";
