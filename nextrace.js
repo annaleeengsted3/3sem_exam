@@ -67,8 +67,14 @@ function showCountdown(nextRace) {
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     // Display the result in the element with id="countdown"
-    document.querySelector("#countdown").innerHTML = days + "d " + hours + "t " + minutes + "m " + seconds + "s ";
-    document.querySelector("#location").innerHTML = `${nextRace.location}`;
+    document.querySelectorAll(".countdown").forEach(div => {
+      div.innerHTML = days + "d " + hours + "t " + minutes + "m " + seconds + "s ";
+    });
+    document.querySelectorAll(".location").forEach(div => {
+      div.innerHTML = `${nextRace.location}`;
+    });
+    // document.querySelector("#countdown").innerHTML = days + "d " + hours + "t " + minutes + "m " + seconds + "s ";
+    // document.querySelector("#location").innerHTML = `${nextRace.location}`;
 
     // If the count down is finished, write "UDLØBET" text
     if (distance < 0) {

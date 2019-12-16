@@ -1,9 +1,6 @@
 "use strict";
-// let navn = ["", "MangoMorten47", "JægerJesper09", "KiwiKaren11"];
-// let by = [, "", "København", "Svendbårg", "HoltE"];
-
-// let gevinst = [, "", "100kr", "50kr", "45kr"];
 get();
+let yesTerms = [];
 
 function get() {
   fetch("https://dantoto-1f71.restdb.io/rest/brugere", {
@@ -21,21 +18,44 @@ function get() {
     });
 }
 
-let i = 0; // the index of the current item to show
+let i = 1; // the index of the current item to show
 
 function visSpillere(spillere) {
+  spillere.forEach(spiller => {
+    if (spiller.kr_vundet > 0 && spiller.terms == true) {
+      yesTerms.push(spiller);
+    }
+  });
+  const vinder1 = yesTerms[0];
+  document.querySelectorAll(".spiller").forEach(div => {
+    div.innerHTML = vinder1.brugernavn;
+  });
+  document.querySelectorAll(".bynavn").forEach(div => {
+    div.innerHTML = vinder1.by;
+  });
+  document.querySelectorAll(".gevinst").forEach(div => {
+    div.innerHTML = vinder1.kr_vundet;
+  });
+  console.log(yesTerms);
   setInterval(function() {
-    const vinder = spillere[i];
+    const vinder = yesTerms[i];
     // setInterval makes it run repeatedly
     if (vinder.kr_vundet > 0 && vinder.terms == true) {
-      document.querySelector("#spiller").innerHTML = `Vores spiller 
-      ${vinder.brugernavn}`;
-      document.querySelector("#bynavn").innerHTML = `fra ${vinder.by}`;
-      document.querySelector("#gevinst").innerHTML = `har lige vundet ${vinder.kr_vundet} kr.`;
+      document.querySelectorAll(".spiller").forEach(div => {
+        div.innerHTML = vinder.brugernavn;
+      });
+      document.querySelectorAll(".bynavn").forEach(div => {
+        div.innerHTML = vinder.by;
+      });
+      document.querySelectorAll(".gevinst").forEach(div => {
+        div.innerHTML = vinder.kr_vundet;
+      });
     }
-
+    if (i == yesTerms.length - 1) {
+      i = 0;
+    } else {
+      i++;
+    }
     // get the item and increment
-    i++;
-    if (i == spillere.length) i = 0; // reset to first element if you've reached the end
   }, 3000);
 }

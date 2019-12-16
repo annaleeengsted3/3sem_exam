@@ -3,7 +3,7 @@
 }
 
 .accon button {
-  width: 70%;
+  width: 60%;
 }
 
 #quickguide_container p {
@@ -24,10 +24,6 @@
   background: transparent;
 }
 
-.accon {
-  margin-bottom: 50px;
-}
-
 .panel {
   padding: 0 18px;
   background-color: transparent;
@@ -40,4 +36,8 @@
 
 #quickguide_container {
   text-align: center;
+}
+
+.lastacc {
+  margin-bottom: 1.5vw;
 }
