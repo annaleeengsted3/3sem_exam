@@ -23,15 +23,10 @@
         height: 100vh;
         margin: 0;
         display: grid;
-<<<<<<< HEAD
-        background-image: url("game_img/background.png");
-        background-size: cover;
-=======
         background-image: url("img/test2.jpg");
         background-repeat: no-repeat;
         background-size: contain;
         background-color: black;
->>>>>>> test
         opacity: 0;
         transition: opacity 2.5s ease;
       }
@@ -148,10 +143,12 @@
       .bushes {
         position: absolute;
         top: 6vw;
-        background: url("game_img/bg_bushes.svg") repeat-x;
-        width: 160vw;
+        background: url("game_img/bg_bushes_test.svg") repeat-x;
+        /* width: 160vw; */
+        width: 240vw;
         /* her beregner jeg den præcise højde med decimaler ud fra størrelsesforholdet i den oprindelige svg som er 3840/182: */
-        height: calc(((160 * 182) / 3840) * 1vw);
+        /* height: calc(((160 * 182) / 3840) * 1vw); */
+        height: calc(((240 * 182) / 5760) * 1vw);
         /* height: 7.6vw; */
         animation-fill-mode: forwards;
       }
@@ -160,9 +157,10 @@
         position: absolute;
         top: 7.5vw;
         background: url("game_img/midlayer.svg") repeat-x;
-        width: 160vw;
+        width: 240vw;
         /* her beregner jeg den præcise højde med decimaler ud fra størrelsesforholdet i den oprindelige svg som er 3840/380: */
-        height: calc(((160 * 380) / 3840) * 1vw);
+        /* height: calc(((160 * 380) / 3840) * 1vw); */
+        height: calc(((240 * 380) / 5760) * 1vw);
         /* height: 31.6vw; */
       }
 
@@ -170,9 +168,10 @@
         position: absolute;
         top: 20vw;
         background: url("game_img/white_fence.svg") repeat-x;
-        width: 160vw;
+        width: 240vw;
         /* her beregner jeg den præcise højde med decimaler ud fra størrelsesforholdet i den oprindelige svg som er 3840/158: */
-        height: calc(((160 * 158) / 3840) * 1vw);
+        /* height: calc(((160 * 158) / 3840) * 1vw); */
+        height: calc(((240 * 158) / 5760) * 1vw);
         height: 6.6vw;
       }
 
@@ -181,7 +180,7 @@
           transform: translateX(0vw);
         }
         to {
-          transform: translateX(-80vw);
+          transform: translateX(-160vw);
         }
       }
 

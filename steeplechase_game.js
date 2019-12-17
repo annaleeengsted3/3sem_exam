@@ -12,10 +12,11 @@ let speed = 2.5;
 function init() {
   document.querySelector(".fade_in").style.opacity = 1;
   fetchSVG();
-  addParallax();
+
   document.querySelector(`button[data-action="start"]`).addEventListener("click", () => {
     document.querySelector("#popup").style.display = "none";
     document.querySelector("#game").style.filter = "none";
+    addParallax();
     startAnimations();
     timeCount();
     document.querySelector("body").addEventListener("keydown", checkKey);
@@ -38,7 +39,7 @@ function showSVG(svg) {
 function addParallax() {
   document.querySelector(".bushes").style.animation = `parallax 40s linear infinite`;
   document.querySelector(".middle").style.animation = `parallax 16s linear infinite`;
-  document.querySelector(".white_fence").style.animation = `parallax 12s linear infinite`;
+  document.querySelector(".white_fence").style.animation = `parallax 10s linear infinite`;
 }
 
 function startAnimations() {
@@ -105,14 +106,19 @@ function resetAnimation() {
 function isCollided() {
   const fencesHitbox = document.querySelectorAll(".fence");
   const horsePos = document.querySelector(".horse_hitbox").getBoundingClientRect();
+  console.log("horse pos: ");
+  console.log(horsePos);
   let collided = false;
   fencesHitbox.forEach(fence => {
     const fencePos = fence.getBoundingClientRect();
+    //should work, doesn't. Måske fordi bounding rect af forhindringer er meget stor?
+    //const dx = horsePos.x + horsePos.width / 2 - fencePos.x + fencePos.width / 2;
+    //const dy = horsePos.y + horsePos.width / 2 - fencePos.y + fencePos.width / 2;
     const dx = horsePos.x - fencePos.x;
     const dy = horsePos.y - fencePos.y;
-    const distance = Math.sqrt(dx * dx + dy * dy);
+    const distance = Math.sqrt(dx * dx + dy * dy); // Math.hypot(dx,dy)
 
-    if (distance < horsePos.width / 2 + (fencePos.width / 2 - 20)) {
+    if (distance < horsePos.width / 2 + fencePos.width / 2 - 20) {
       console.log("COLLISION");
       collided = true;
       gameover = true;

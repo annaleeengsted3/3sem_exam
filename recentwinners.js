@@ -13,7 +13,6 @@ function get() {
   })
     .then(e => e.json())
     .then(spillere => {
-      console.log(spillere);
       visSpillere(spillere);
     });
 }
