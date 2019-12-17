@@ -167,6 +167,7 @@ function displayList(users) {
 
   // we are building a new list
   users.forEach(displayUser);
+  adminLogin();
 }
 
 function displayUser(user) {
@@ -176,7 +177,7 @@ function displayUser(user) {
 
   // set clone data
   clone.querySelector(".brugernavn").innerHTML = user.brugernavn;
-  clone.querySelector(".by").innerHTML = user.by;
+  clone.querySelector(".by").innerHTML = `<article class="location"><img src="img/location_pin.svg" alt="location pin"> <p>${user.by}</p></article>`;
   if (user.kr_vundet == 0) {
     clone.querySelector(".kr_vundet").innerHTML = `<article>${user.brugernavn} har ikke vundet noget endnu.`;
   } else {

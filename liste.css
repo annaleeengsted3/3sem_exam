@@ -1,6 +1,8 @@
 body {
-  background-image: url(img/background.png);
+  background-image: url(img/test2.jpg);
+  background-repeat: no-repeat;
   background-size: contain;
+  background-color: black;
 }
 
 :root {
@@ -12,6 +14,18 @@ body {
 .filter,
 .filternav h2 {
   display: none;
+}
+
+.singleUser img {
+  max-width: 20px;
+}
+
+.location {
+  display: flex;
+}
+
+.location p {
+  padding-left: 1vw;
 }
 
 hr {
