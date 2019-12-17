@@ -1,29 +1,23 @@
 "use strict";
 let currentTab = 0;
 window.addEventListener("resize", checkWindow);
-//window.onresize = checkWindow();
-let counter = 0;
+
 checkWindow();
 function checkWindow() {
-  console.log("count is: " + counter);
   const windoWidth = window.innerWidth;
   const formContent = document.querySelector("#form_template");
   const clone = formContent.content.cloneNode(true);
   const headlineContent = document.querySelector("#headline_template");
   const headlineClone = headlineContent.content.cloneNode(true);
-  if (windoWidth < 400 && counter < 3) {
-    counter++;
-    console.log("inserted for under 400px");
-    document.querySelector(".form_desktop").innerHTML = "";
-    document.querySelector(".title_desktop").innerHTML = "";
+  document.querySelector(".title_desktop").innerHTML = "";
+  document.querySelector(".form_desktop").innerHTML = "";
+  document.querySelector(".form_mobil").innerHTML = "";
+  document.querySelector(".title_mobil").innerHTML = "";
+  if (windoWidth < 400) {
     document.querySelector(".form_mobil").appendChild(clone);
     document.querySelector(".title_mobil").appendChild(headlineClone);
     showTab(currentTab);
-  } else if (windoWidth > 400 && counter < 3) {
-    counter++;
-    console.log("inserted for over 400px");
-    document.querySelector(".form_mobil").innerHTML = "";
-    document.querySelector(".title_mobil").innerHTML = "";
+  } else if (windoWidth > 400) {
     document.querySelector(".form_desktop").appendChild(clone);
     document.querySelector(".title_desktop").appendChild(headlineClone);
     showTab(currentTab);
