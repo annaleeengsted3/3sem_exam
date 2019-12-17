@@ -3,7 +3,7 @@
 let allUsers = [];
 let currentList = [];
 let sortButton;
-let Filter;
+let Filter = "ja_terms";
 const loginForm = document.querySelector(".login-form");
 const formEdit = document.querySelector("form.formEdit");
 let admin = false;
@@ -120,6 +120,7 @@ function jaTerms(user) {
 
 function setSort() {
   sortButton = this.getAttribute("data-sort");
+  document.querySelector("h1").textContent = this.textContent;
 
   sortCurrentUsers(sortButton);
 }
@@ -140,14 +141,15 @@ function sortCurrentUsers(sortButton) {
 
 // FILTRERING
 
-function filterListBy(filterBy) {
-  currentList = allUsers.filter(user => {
-    return true;
-  });
-}
+// function filterListBy(filterBy) {
+//   currentList = allUsers.filter(user => {
+//     return true;
+//   });
+// }
 
 function setFilter() {
   Filter = this.dataset.filter;
+  document.querySelector("h1").textContent = this.textContent;
   document.querySelectorAll(".filter").forEach(elm => {
     elm.classList.remove("valgt");
   });
@@ -167,6 +169,7 @@ function displayList(users) {
 
   // we are building a new list
   users.forEach(displayUser);
+  adminLogin();
 }
 
 function displayUser(user) {
@@ -176,7 +179,7 @@ function displayUser(user) {
 
   // set clone data
   clone.querySelector(".brugernavn").innerHTML = user.brugernavn;
-  clone.querySelector(".by").innerHTML = user.by;
+  clone.querySelector(".by").innerHTML = `<article class="location"><img src="img/location_pin.svg" alt="location pin"> <p>${user.by}</p></article>`;
   if (user.kr_vundet == 0) {
     clone.querySelector(".kr_vundet").innerHTML = `<article>${user.brugernavn} har ikke vundet noget endnu.`;
   } else {
@@ -222,9 +225,13 @@ function adminLogin() {
     document.querySelectorAll(".adminBtn").forEach(adminButton => {
       adminButton.style.display = "block";
     });
-
-    document.querySelector("#popup").style.display = "none";
+    document.querySelectorAll(".filter").forEach(filterButton => {
+      filterButton.style.display = "inline";
+    });
+    document.querySelector(".filternav>h2").style.display = "block";
   }
+
+  document.querySelector("#popup").style.display = "none";
 }
 
 //DELETE USER
@@ -321,24 +328,24 @@ function put() {
     });
 }
 
-function post(data) {
-  const postData = JSON.stringify(data);
-  fetch("https://dantoto-1f71.restdb.io/rest/brugere/", {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-      "x-apikey": "5dea0bc34658275ac9dc23ad",
-      "cache-control": "no-cache"
-    },
-    body: postData
-  })
-    .then(res => res.json())
-    .then(data => {
-      //getUser(data);
-      cleanJSON(data);
-      // console.log(data);
-    });
-}
+// function post(data) {
+//   const postData = JSON.stringify(data);
+//   fetch("https://dantoto-1f71.restdb.io/rest/brugere/", {
+//     method: "post",
+//     headers: {
+//       "Content-Type": "application/json; charset=utf-8",
+//       "x-apikey": "5dea0bc34658275ac9dc23ad",
+//       "cache-control": "no-cache"
+//     },
+//     body: postData
+//   })
+//     .then(res => res.json())
+//     .then(data => {
+//       //getUser(data);
+//       cleanJSON(data);
+//       // console.log(data);
+//     });
+// }
 
 //Prototype user
 const User = {

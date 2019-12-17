@@ -7,7 +7,7 @@
     <title>Dantoto: opret dig nu og spil på 4min!</title>
     <!-- <link rel="stylesheet" href="landing.css" /> -->
     <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Roboto:400,500,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="accordion.css" />
   </head>
   <body>
@@ -23,7 +23,7 @@
             <h3>Næste løb</h3>
             <div class="horsetime"></div>
             <p class="countdown"></p>
-            <p>Sted: <span class="location"></span></p>
+            <p class="location_pin"><img src="img/location_pin.svg" alt="location_pin" /> <span class="location"></span></p>
             <!-- <button class="spilnuBtn">Spil allerede nu og få forhøjet odds!</button> -->
           </div>
         </article>
@@ -104,7 +104,7 @@
             <h3>Næste løb</h3>
             <div class="horsetime"></div>
             <p class="countdown"></p>
-            <p>Sted: <span class="location"></span></p>
+            <p class="location_pin"><img src="img/location_pin.svg" alt="location_pin" /> <span class="location"></span></p>
             <!-- <button class="spilnuBtn">Spil allerede nu og få forhøjet odds!</button> -->
           </div>
         </article>
@@ -186,10 +186,10 @@
           <div class="tab first_step">
             <label for="brugernavn">Brugernavn</label>
             <input id="brugernavn" required pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" name="brugernavn" oninput="this.className = ''" />
-            <span class="informer">Skal indholde 2-20 karakterer</span>
+            <span class="informer">Synligt for andre. Maks 20 tegn (A-Z. Tilladte tegn: . - _)</span>
             <label for="password">Kodeord:</label>
             <input type="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required id="password" name="password" oninput="this.className = ''" />
-            <span class="informer">Skal indholde minimum 8 karakterer, heraf minimum et stort bogstav og et tal.</span>
+            <span class="informer">Skal indholde minimum 8 karakterer, heraf minimum ét stort bogstav og ét tal.</span>
           </div>
 
           <div class="tab">
@@ -205,7 +205,7 @@
             <input class="checkbox" type="checkbox" name="terms" id="terms" />
           </div>
           <div class="tab">
-            <p class="registered">Tak for din registrering! Du vil modtage en e-mail med yderligere instrukser.</p>
+            <p class="registered">Tak for din registrering! Du vil modtage en e-mail med yderligere instrukser for at færdiggøre din tilmelding.</p>
           </div>
         </div>
 

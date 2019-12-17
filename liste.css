@@ -1,25 +1,109 @@
 body {
-  background-image: url(img/background.png);
-  background-size: 100%;
+  background-image: url(img/test2.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: black;
+}
+
+:root {
+  --danOrange: #dc5f11;
+  --danWhite: #ffff;
+  --danGray: #383535;
+}
+
+.filter,
+.filternav h2 {
+  display: none;
+}
+
+.singleUser img {
+  max-width: 20px;
+}
+
+.location {
+  display: flex;
+}
+
+.location p {
+  padding-left: 1vw;
+}
+.displaycurrent {
+  color: var(--danWhite);
+  text-align: center;
+}
+
+hr {
+  border: 0;
+  height: 2px;
+  /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--danOrange), rgba(0, 0, 0, 0)); */
+  background-color: var(--danOrange);
+  margin: 2vw;
 }
 
 .hide {
   display: none;
 }
 
+.adminBtn {
+  display: none;
+}
+
+h2 {
+  font-family: "Roboto", sans-serif;
+  color: var(--danWhite);
+  letter-spacing: 2px;
+  font-size: 1.3rem;
+}
+h1 {
+  font-family: "Roboto", sans-serif;
+  color: var(--danWhite);
+  letter-spacing: 2px;
+  font-size: 1.3rem;
+}
+
+#liste h2 {
+  margin-left: 2vw;
+}
+
+h3 {
+  color: var(--danWhite);
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+p {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
 /**************** NAVIGATION/BUTTONS ****************/
 
-#navigation {
+button {
+  padding: 1.7vw;
+  background-color: var(--danGray);
+  /*border: var(--danOrange) 1px solid;*/
+  cursor: pointer;
+  color: var(--danWhite);
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+button:hover {
+  /*background-color: var(--danOrange);*/
+  border: var(--danOrange) 1px solid;
+}
+
+#button_overview {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-self: center;
+  grid-template-columns: 1fr;
 }
 
 /**************** LISTE VIEW ****************/
 
 .users {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   margin: 5vw;
   grid-row-gap: 2vw;
 }
@@ -33,19 +117,120 @@ body {
   height: 100vh;
   position: fixed;
   background-color: rgba(255, 255, 255, 0.36);
-  overflow: scroll;
+  overflow: hidden;
   display: none;
   margin: 0;
 }
 
 #indhold {
   min-height: 50vh;
-  background-color: white;
+  background-color: var(--danGray);
   width: 60vw;
   margin: 4rem auto;
-  border: 1px black solid;
+  border: 1px var(--danOrange) solid;
+  padding: 2vw;
 }
 
-.adminBtn {
-  display: none;
+.login-form {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  margin: 5vw 15vw 2vw 15vw;
+  grid-row-gap: 2vw;
+}
+
+.login-form button {
+  font-size: 0.8rem;
+}
+
+#luk {
+  position: fixed;
+  right: 20vw;
+  top: 7vw;
+}
+
+/**************** REDIGER BRUGER / FORM ****************/
+.editBtn {
+  margin-right: 2vw;
+}
+
+.newuser_container {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-row-gap: 2vw;
+  margin: 5vw 20vw 2vw 0;
+}
+
+.newuser_container label {
+  color: var(--danWhite);
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+.newuser_container input {
+  max-width: 35vw;
+  padding: 0.7vw;
+}
+
+.newuser_container button {
+  width: 35vw;
+  margin-top: 2vw;
+}
+
+@media only screen and (min-width: 700px) {
+  .users {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  #button_overview {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    margin: 0 2vw 0 2vw;
+  }
+
+  .adminnav {
+    justify-self: end;
+    text-align: right;
+  }
+
+  button {
+    padding: 1vw;
+  }
+
+  .users {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /**************** REDIGER BRUGER / FORM ****************/
+  .editBtn {
+    margin-right: 1vw;
+  }
+
+  #edit_form {
+    margin-left: 2vw;
+  }
+
+  .newuser_container {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-row-gap: 1vw;
+    margin-top: 2vw;
+  }
+
+  .newuser_container label {
+    color: var(--danWhite);
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+  }
+
+  .newuser_container input {
+    max-width: 15vw;
+    padding: 0.5vw;
+  }
+
+  .newuser_container button {
+    width: 15vw;
+    margin-top: 2vw;
+  }
 }

@@ -56,11 +56,16 @@ function showTab(tabs) {
     document.querySelector("#nextBtn").innerHTML = "Luk";
     document.querySelector("#prevBtn").style.display = "none";
   }
+  // "Videre" button wouldn't show when going back unless i put this.
+  if (tabs == 1) {
+    document.querySelector("#nextBtn").style.display = "inline";
+  }
 
   activeStep(tabs);
 }
 
 function nextPrev(tabs) {
+  // Checks validation according to patterns on click "videre" and let's you go back in the form without checking for validation.
   const bn = document.querySelector("#brugernavn");
   const pw = document.querySelector("#password");
   const em = document.querySelector("#email");
@@ -72,12 +77,12 @@ function nextPrev(tabs) {
     }
   }
   if (currentTab === 1) {
-    if (!email.validity.valid || !by.validity.valid) {
+    if (!em.validity.valid || !by.validity.valid) {
       valid = false;
     }
   }
 
-  if (valid) {
+  if (tabs < 0 || valid) {
     // This function displays the correct "tab" depending on which button you click.
     let x = document.querySelectorAll(".tab");
 

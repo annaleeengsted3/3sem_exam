@@ -64,6 +64,16 @@ main {
   display: grid;
   margin-bottom: 2vw;
 }
+
+.location_pin {
+  display: flex;
+}
+
+.location_pin img {
+  max-width: 25px;
+  padding-right: 1vw;
+}
+
 .nextrace_border {
   padding: 2vw 4vw;
   border: 4px solid var(--danYellow);
@@ -77,6 +87,8 @@ main {
 
 .nextrace_border h3 {
   font-size: 1.8vw;
+  font-family: "Abril Fatface", cursive;
+  letter-spacing: 1.5px;
 }
 .horsetime {
   background-image: url("img/horse_time.png");
@@ -92,6 +104,7 @@ main {
 .location {
   font-size: 1.5vw;
   font-weight: 700;
+  align-self: center;
 }
 
 #game {
@@ -141,6 +154,7 @@ main {
   display: flex;
   align-items: center;
   /* justify-content: center; */
+  margin-left: 3vw;
 }
 
 .flest {
