@@ -27,6 +27,10 @@ body {
 .location p {
   padding-left: 1vw;
 }
+.displaycurrent {
+  color: var(--danWhite);
+  text-align: center;
+}
 
 hr {
   border: 0;
@@ -45,6 +49,12 @@ hr {
 }
 
 h2 {
+  font-family: "Roboto", sans-serif;
+  color: var(--danWhite);
+  letter-spacing: 2px;
+  font-size: 1.3rem;
+}
+h1 {
   font-family: "Roboto", sans-serif;
   color: var(--danWhite);
   letter-spacing: 2px;
