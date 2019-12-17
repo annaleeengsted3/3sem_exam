@@ -75,7 +75,7 @@ function nextPrev(tabs) {
     }
   }
 
-  if (valid) {
+  if (tabs < 0 || valid) {
     // This function displays the correct "tab" depending on which button you click.
     let x = document.querySelectorAll(".tab");
 
