@@ -14,6 +14,12 @@ function init() {
   fetchSVG();
 
   document.querySelector(`button[data-action="start"]`).addEventListener("click", () => {
+    document.querySelector("#gallop").currentTime = 1;
+    document.querySelector("#gallop").play();
+    document.querySelector("#cheer").volume = 0.3;
+    document.querySelector("#cheer").play();
+    document.querySelector("#cheer").loop = true;
+    document.querySelector("#gallop").loop = true;
     document.querySelector("#popup").style.display = "none";
     document.querySelector("#game").style.filter = "none";
     addParallax();
@@ -90,6 +96,11 @@ function checkKey(e) {
     document.querySelector(".horse_sprite").style.opacity = 0;
     document.querySelector(".horse_jumping").style.opacity = 1;
     horse.classList.add("jump");
+
+    document.querySelector("#jump").currentTime = 0;
+    document.querySelector("#jump").play();
+    document.querySelector("#gallop").pause();
+
     // horse.addEventListener("animationend", ()=>{
     //   horse.classList.remove("jump");
     // })
@@ -101,6 +112,9 @@ function resetAnimation() {
   //TO DO: Start galloping sound, remove jumping
   document.querySelector(".horse_sprite").style.opacity = 1;
   document.querySelector(".horse_jumping").style.opacity = 0;
+
+  document.querySelector("#jump").pause();
+  document.querySelector("#gallop").play();
 }
 
 function isCollided() {
@@ -165,6 +179,12 @@ function gameOver() {
   document.querySelector(".white_fence").style.animationPlayState = `paused`;
 
   //TO DO: Add GAMEOVER sound
+  document.querySelector("#jump").pause();
+  document.querySelector("#gallop").pause();
+  document.querySelector("#cheer").pause();
+  document.querySelector("#gameover_audio2").play();
+  document.querySelector("#gameover_audio").play();
+
   document.querySelector(".horse_sprite").style.opacity = 0;
   document.querySelector(".horse_jumping").style.opacity = 0;
   document.querySelector(".horse_dead").style.opacity = 1;
