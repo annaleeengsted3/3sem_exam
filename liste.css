@@ -59,6 +59,7 @@ h1 {
   color: var(--danWhite);
   letter-spacing: 2px;
   font-size: 1.3rem;
+  margin-left: 2vw;
 }
 
 #liste h2 {
