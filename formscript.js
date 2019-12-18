@@ -1,5 +1,5 @@
 "use strict";
-let currentTab = 0;
+let currentTab = 0; // Declare the default with a varible, so that the first tab is shown. (Goes from 0-3)
 window.addEventListener("resize", checkWindow);
 
 checkWindow();
@@ -67,12 +67,12 @@ function nextPrev(tabs) {
   let valid = true;
   if (currentTab === 0) {
     if (!bn.validity.valid || !pw.validity.valid) {
-      valid = false;
+      valid = false; //Check for validation of the individual input fields of first tab by using "Validity"
     }
   }
   if (currentTab === 1) {
     if (!em.validity.valid || !by.validity.valid) {
-      valid = false;
+      valid = false; //Check for validation of the individual input fields of second tab by using "Validity"
     }
   }
 
@@ -81,9 +81,9 @@ function nextPrev(tabs) {
     let x = document.querySelectorAll(".tab");
 
     if (tabs == 1 && !validateForm()) return false;
-
+    // Here we hide the current tab
     x[currentTab].style.display = "none";
-
+    // And go back or forward to the next tab.
     currentTab = currentTab + tabs;
 
     if (currentTab >= x.length) {
@@ -93,6 +93,7 @@ function nextPrev(tabs) {
 
     showTab(currentTab);
   } else {
+    // If form is not valid, we use reportValidity to activate the build in html validation error.
     document.querySelector("form").reportValidity();
   }
 }
@@ -122,11 +123,12 @@ function validateForm() {
 }
 
 function activeStep(tabs) {
+  // This function removes the "active" class of all steps
   let i,
     x = document.querySelectorAll(".step");
   for (i = 0; i < x.length; i++) {
     x[i].className = x[i].className.replace(" active", "");
   }
-
+  // And adds the active class to the current step.
   x[tabs].className += " active";
 }
