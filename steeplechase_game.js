@@ -21,14 +21,38 @@ function init() {
     document.querySelector("#cheer").loop = true;
     document.querySelector("#gallop").loop = true;
     document.querySelector("#popup").style.display = "none";
-    document.querySelector("#game").style.filter = "none";
     addParallax();
     startAnimations();
     timeCount();
     document.querySelector("body").addEventListener("keydown", checkKey);
     document.querySelector("body").addEventListener("keyup", resetAnimation);
+    checkWindowSize();
+
     isCollided();
   });
+}
+
+//virkelig hurtig løsning på, at den også virker på klik i mobil:
+function checkWindowSize() {
+  const windoWidth = window.innerWidth;
+  if (windoWidth < 850) {
+    setInterval(() => {
+      if (document.querySelector("#popup").style.display == "none") {
+        console.log("mobile version clicked when start screen is gone");
+        document.querySelector("#game").addEventListener("click", () => {
+          document.querySelector(".horse_sprite").style.opacity = 0;
+          document.querySelector(".horse_jumping").style.opacity = 1;
+          horse.classList.add("jump");
+
+          document.querySelector("#jump").currentTime = 0;
+          document.querySelector("#jump").play();
+          document.querySelector("#gallop").pause();
+          horse.addEventListener("animationend", resetAnimation);
+        });
+      }
+    }, 1000);
+  }
+  //den venter 1 sekund, før eventlistener tilføjes, ellers springer den med det samme man klikker start
 }
 
 async function fetchSVG() {
@@ -68,7 +92,6 @@ function createFence(i) {
     document.querySelector(".fence").style.setProperty("--speed", speed + "s");
     addAnimation(fence);
     if (i % 5 === 0) {
-      console.log("fences divisible by 5");
       //to do: add user feedback like "good job" etc, feedback that it gets harder now:
       speed = speed - 0.4;
       document.querySelector(".fence").style.setProperty("--speed", speed + "s");
@@ -92,24 +115,17 @@ function checkKey(e) {
 
   if (e.keyCode == "32") {
     //space
-    //TO DO: Stop galloping sound, add jumping?
     document.querySelector(".horse_sprite").style.opacity = 0;
     document.querySelector(".horse_jumping").style.opacity = 1;
     horse.classList.add("jump");
-
     document.querySelector("#jump").currentTime = 0;
     document.querySelector("#jump").play();
     document.querySelector("#gallop").pause();
-
-    // horse.addEventListener("animationend", ()=>{
-    //   horse.classList.remove("jump");
-    // })
   }
 }
 
 function resetAnimation() {
   horse.classList.remove("jump");
-  //TO DO: Start galloping sound, remove jumping
   document.querySelector(".horse_sprite").style.opacity = 1;
   document.querySelector(".horse_jumping").style.opacity = 0;
 
@@ -120,8 +136,6 @@ function resetAnimation() {
 function isCollided() {
   const fencesHitbox = document.querySelectorAll(".fence");
   const horsePos = document.querySelector(".horse_hitbox").getBoundingClientRect();
-  console.log("horse pos: ");
-  console.log(horsePos);
   let collided = false;
   fencesHitbox.forEach(fence => {
     const fencePos = fence.getBoundingClientRect();
@@ -172,23 +186,21 @@ function gameOver() {
   document.querySelectorAll(".fence").forEach(fence => {
     fence.style.animationPlayState = "paused";
   });
+  document.querySelector("#game").removeEventListener("click", checkWindowSize);
+  horse.removeEventListener("animationend", resetAnimation);
   document.querySelector("body").removeEventListener("keydown", checkKey);
   document.querySelector("body").removeEventListener("keyup", resetAnimation);
   document.querySelector(".bushes").style.animationPlayState = `paused`;
   document.querySelector(".middle").style.animationPlayState = `paused`;
   document.querySelector(".white_fence").style.animationPlayState = `paused`;
-
-  //TO DO: Add GAMEOVER sound
   document.querySelector("#jump").pause();
   document.querySelector("#gallop").pause();
   document.querySelector("#cheer").pause();
   document.querySelector("#gameover_audio2").play();
   document.querySelector("#gameover_audio").play();
-
   document.querySelector(".horse_sprite").style.opacity = 0;
   document.querySelector(".horse_jumping").style.opacity = 0;
   document.querySelector(".horse_dead").style.opacity = 1;
-
   document.querySelector("#gameover").style.display = "block";
   document.querySelector(".gameover_time").innerHTML = time;
   document.querySelector("#replay").addEventListener("click", () => {
