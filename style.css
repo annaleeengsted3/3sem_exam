@@ -382,6 +382,9 @@ input.invalid {
 
   color: grey;
 }
+.small {
+  font-size: 0.7rem;
+}
 .tab {
   margin-bottom: 2vw;
 }
