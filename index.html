@@ -185,10 +185,25 @@
         <div class="tabcontainer">
           <div class="tab first_step">
             <label for="brugernavn">Brugernavn</label>
-            <input id="brugernavn" required pattern="^[a-zA-ZæøåÆØÅ][a-zA-ZæøåÆØÅ0-9-_\.]{1,20}$" name="brugernavn" oninput="this.className = ''" />
+            <input
+              id="brugernavn"
+              required
+              pattern="^[a-zA-ZæøåÆØÅ][a-zA-ZæøåÆØÅ0-9-_\.]{1,20}$"
+              name="brugernavn"
+              oninput="this.className = ''"
+              oninvalid="this.setCustomValidity('Du har indtastet et brugernavn der ikke stemmer overens med kravene.')"
+            />
             <span class="informer">Synligt for andre. Maks 20 karakterer.<br /><span class="small">Tilladte tegn . - _</span></span>
             <label for="password">Kodeord:</label>
-            <input type="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required id="password" name="password" oninput="this.className = ''" />
+            <input
+              type="password"
+              pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+              required
+              id="password"
+              name="password"
+              oninput="this.className = ''"
+              oninvalid="this.setCustomValidity('Du har indtastet et password der ikke stemmer overens med kravene.')"
+            />
             <span class="informer">Skal indholde minimum 8 karakterer, heraf minimum ét stort bogstav og ét tal.</span>
           </div>
 
