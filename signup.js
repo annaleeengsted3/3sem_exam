@@ -5,10 +5,7 @@ const form = document.querySelector("form");
 form.addEventListener("submit", evt => {
   console.log(evt);
   evt.preventDefault();
-  //   const boxes = Array.from(form.querySelectorAll("[type=checkbox]:checked"));
-  //   const nice = boxes.map(el => {
-  //     return el.value;
-  //   });
+
   let userObject = {
     brugernavn: form.elements.brugernavn.value,
     email: form.elements.email.value,
@@ -35,8 +32,6 @@ function post(data) {
   })
     .then(res => res.json())
     .then(data => {
-      //getFriend(data);
-      //cleanJSON(data);
       console.log(data);
     });
 }

@@ -2,11 +2,7 @@
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
-  console.log("script works");
-
   getHeadline();
-
-  //document.querySelector("body").addEventListener("scroll", startInteractive);
 }
 let typing = document.querySelector(".string-placeholder").textContent;
 let typingP = document.querySelector(".string-placeholder");
@@ -23,16 +19,13 @@ function getHeadline() {
 }
 
 function startH1Array() {
-  //console.log("startH1Array");
   typingP.style.setProperty("--string_l", 0);
   arrayCnt = (arrayCnt + 1) % (stringArray.length + 1);
-  //console.log(arrayCnt);
   if (arrayCnt == stringArray.length) {
     arrayCnt = 0;
   }
   typingLength = stringArray[arrayCnt].length;
   document.querySelector(".string-placeholder").textContent = stringArray[arrayCnt];
-  //console.log(stringArray[arrayCnt]);
   setTimeout(function() {
     typingP.style.setProperty("--string_l", typingLength + 1);
   }, 800);

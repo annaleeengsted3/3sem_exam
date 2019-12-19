@@ -49,8 +49,6 @@ function get() {
   })
     .then(e => e.json())
     .then(users => {
-      //console.log(users);
-      //users.forEach(cleanJSON);
       prepareObjects(users);
     });
 }
@@ -71,15 +69,11 @@ function prepareObjects(users) {
     user.terms = jsonObject.terms;
 
     allUsers.push(user);
-    //  currentList.push(user);
   });
   rebuildList();
 }
 
 function rebuildList() {
-  //console.log("rebuild List");
-  //filterListBy("all");
-
   // if Filter = harVundet
 
   // else if Filter = har Ikke vundet
@@ -141,12 +135,6 @@ function sortCurrentUsers(sortButton) {
 
 // FILTRERING
 
-// function filterListBy(filterBy) {
-//   currentList = allUsers.filter(user => {
-//     return true;
-//   });
-// }
-
 function setFilter() {
   Filter = this.dataset.filter;
   document.querySelector("h1").textContent = this.textContent;
@@ -154,12 +142,8 @@ function setFilter() {
     elm.classList.remove("valgt");
   });
   this.classList.add("valgt");
-  //console.log(Filter);
 
   rebuildList();
-
-  // currentList = filtering(Filter);
-  // displayList(currentList);
 }
 
 function displayList(users) {
@@ -189,7 +173,6 @@ function displayUser(user) {
   //delete user
 
   clone.querySelector(".deleteBtn").addEventListener("click", () => {
-    //console.log(user._id);
     deleteUser(user._id);
   });
 
@@ -197,7 +180,7 @@ function displayUser(user) {
   clone.querySelector(".editBtn").addEventListener("click", e => {
     //what happens when you pres the edit button goes here
     //first fetch, then populate a form
-    //how do we fetch a single post from restdb? -->
+
     event.preventDefault();
     document.querySelector(".formEdit").classList.remove("hide");
 
@@ -246,8 +229,6 @@ function deleteUser(_id) {
   })
     .then(res => res.json())
     .then(data => {
-      //TODO: Delete from DOM
-      //console.log(`.singleUser[data-userid="${_id}"]`);
       document.querySelector(`.singleUser[data-userid="${_id}"]`).remove();
     });
 
@@ -288,8 +269,6 @@ function put() {
     _id: formEdit.elements._id.value
   };
 
-  // console.log(data);
-
   const postData = JSON.stringify(data);
   const superID = formEdit.elements._id.value;
   fetch("https://dantoto-1f71.restdb.io/rest/brugere/" + superID, {
@@ -303,7 +282,6 @@ function put() {
   })
     .then(t => t.json())
     .then(updatedUser => {
-      //getUser(data);
       const daddy = document.querySelector(`.singleUser[data-userid="${updatedUser._id}"]`);
 
       daddy.querySelector(".brugernavn").innerHTML = updatedUser.brugernavn;
@@ -314,7 +292,6 @@ function put() {
         daddy.querySelector(".kr_vundet").innerHTML = `<article>${updatedUser.brugernavn} har i alt vundet: ${updatedUser.kr_vundet} kr.`;
       }
 
-      //prepareObjects(updatedUser);
       allUsers = allUsers.map(user => {
         if (user._id != updatedUser._id) {
           return user;
@@ -323,29 +300,8 @@ function put() {
         }
       });
       rebuildList();
-
-      // console.log(data);
     });
 }
-
-// function post(data) {
-//   const postData = JSON.stringify(data);
-//   fetch("https://dantoto-1f71.restdb.io/rest/brugere/", {
-//     method: "post",
-//     headers: {
-//       "Content-Type": "application/json; charset=utf-8",
-//       "x-apikey": "5dea0bc34658275ac9dc23ad",
-//       "cache-control": "no-cache"
-//     },
-//     body: postData
-//   })
-//     .then(res => res.json())
-//     .then(data => {
-//       //getUser(data);
-//       cleanJSON(data);
-//       // console.log(data);
-//     });
-// }
 
 //Prototype user
 const User = {

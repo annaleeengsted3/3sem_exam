@@ -42,7 +42,7 @@ function checkEmail() {
     .then(e => e.json())
     .then(users => {
       if (users.length > 0) {
-        console.log("user exists");
+        console.log("email exists");
         document.querySelector("form").elements.email.value = "Email eksisterer allerede";
         document.querySelector("#email").style.color = "red";
         document.querySelector(".nextBtn").style.backgroundColor = "gray";

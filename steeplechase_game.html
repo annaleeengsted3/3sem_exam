@@ -84,7 +84,6 @@
         width: 40%;
         height: 40%;
         border-radius: 50%;
-        /* border: 2px solid red; */
         align-self: center;
         justify-self: center;
         margin-left: 10%;
@@ -145,13 +144,9 @@
         position: absolute;
         top: 6vw;
         background: url("game_img/bg_bushes_test.svg") repeat-x;
-        /* width: 160vw; */
         width: 240vw;
         /* her beregner jeg den præcise højde med decimaler ud fra størrelsesforholdet i den oprindelige svg som er 3840/182: */
-        /* height: calc(((160 * 182) / 3840) * 1vw); */
         height: calc(((240 * 182) / 5760) * 1vw);
-        /* height: 7.6vw; */
-        animation-fill-mode: forwards;
       }
 
       .middle {
@@ -159,10 +154,8 @@
         top: 7.5vw;
         background: url("game_img/midlayer.svg") repeat-x;
         width: 240vw;
-        /* her beregner jeg den præcise højde med decimaler ud fra størrelsesforholdet i den oprindelige svg som er 3840/380: */
-        /* height: calc(((160 * 380) / 3840) * 1vw); */
+        /* her beregner jeg den præcise højde med decimaler ud fra størrelsesforholdet i den oprindelige svg som er 5760/380: */
         height: calc(((240 * 380) / 5760) * 1vw);
-        /* height: 31.6vw; */
       }
 
       .white_fence {
@@ -170,10 +163,9 @@
         top: 20vw;
         background: url("game_img/white_fence.svg") repeat-x;
         width: 240vw;
-        /* her beregner jeg den præcise højde med decimaler ud fra størrelsesforholdet i den oprindelige svg som er 3840/158: */
-        /* height: calc(((160 * 158) / 3840) * 1vw); */
+        /* her beregner jeg den præcise højde med decimaler ud fra størrelsesforholdet i den oprindelige svg som er 5760/158: */
         height: calc(((240 * 158) / 5760) * 1vw);
-        height: 6.6vw;
+        /* height: 6.6vw; */
       }
 
       @keyframes parallax {
@@ -191,7 +183,6 @@
         position: absolute;
         background-image: url("game_img/movement2.jpg");
         background-size: cover;
-        /* display: none; */
       }
 
       .start_horse {
@@ -200,7 +191,6 @@
         position: absolute;
         right: 31vw;
         bottom: 1vw;
-        /* transform: scaleX(-1); */
       }
       .start_horse #horse_frontpage {
         transform-origin: bottom center;
@@ -225,7 +215,6 @@
         color: white;
         font-weight: 600;
         font-size: 2vw;
-        /* margin-left: 31vw; */
       }
       .instruc {
         margin-left: 15vw;

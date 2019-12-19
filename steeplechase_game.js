@@ -163,7 +163,6 @@ function timeCount() {
 
   setInterval(function() {
     elapsedTime = ((Date.now() - startTime) / 1000).toFixed(2);
-    //document.querySelector("#time").innerHTML = elapsedTime;
     time = elapsedTime;
     if (gameover == false) {
       showTime(elapsedTime);
