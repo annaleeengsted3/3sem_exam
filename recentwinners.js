@@ -2,6 +2,31 @@
 
 let yesTerms = [];
 let allebrugere = [];
+
+//Make a new user when clicking submit
+const form = document.querySelector("form");
+
+function submitForm() {
+  form.addEventListener("submit", evt => {
+    evt.preventDefault();
+    //   const boxes = Array.from(form.querySelectorAll("[type=checkbox]:checked"));
+    //   const nice = boxes.map(el => {
+    //     return el.value;
+    //   });
+    let userObject = {
+      brugernavn: form.elements.brugernavn.value,
+      email: form.elements.email.value,
+      password: form.elements.password.value,
+      by: form.elements.by.value,
+      terms: form.elements.terms.checked,
+      kr_vundet: 0
+    };
+    post(userObject);
+    //form.reset();
+    //evt.preventDefault();
+  });
+}
+
 get();
 function get() {
   fetch("https://dantoto-1f71.restdb.io/rest/brugere", {
@@ -61,29 +86,6 @@ function visSpillere(spillere) {
     }
     // get the item and increment
   }, 3000);
-}
-
-//Make a new user when clicking submit
-const form = document.querySelector("form");
-
-function submitForm() {
-  form.addEventListener("submit", evt => {
-    evt.preventDefault();
-    //   const boxes = Array.from(form.querySelectorAll("[type=checkbox]:checked"));
-    //   const nice = boxes.map(el => {
-    //     return el.value;
-    //   });
-    let userObject = {
-      brugernavn: form.elements.brugernavn.value,
-      email: form.elements.email.value,
-      password: form.elements.password.value,
-      by: form.elements.by.value,
-      terms: form.elements.terms.checked,
-      kr_vundet: 0
-    };
-    post(userObject);
-    form.reset();
-  });
 }
 
 form.elements.brugernavn.addEventListener("blur", checkForm);
