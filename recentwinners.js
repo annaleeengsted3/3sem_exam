@@ -14,10 +14,10 @@ function get() {
   })
     .then(e => e.json())
     .then(spillere => {
-      spillere.forEach(spiller => {
-        allebrugere.push(spiller);
-      });
-      console.log(allebrugere);
+      // spillere.forEach(spiller => {
+      //   allebrugere.push(spiller);
+      // });
+      //console.log(allebrugere);
       visSpillere(spillere);
     });
 }
