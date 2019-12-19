@@ -1,7 +1,7 @@
 "use strict";
 
 let yesTerms = [];
-let allebrugere;
+let allebrugere = [];
 get();
 function get() {
   fetch("https://dantoto-1f71.restdb.io/rest/brugere", {
@@ -14,7 +14,10 @@ function get() {
   })
     .then(e => e.json())
     .then(spillere => {
-      checkForm(spillere);
+      spillere.forEach(spiller => {
+        allebrugere.push(spiller);
+      });
+      console.log(allebrugere);
       visSpillere(spillere);
     });
 }
@@ -84,23 +87,16 @@ function submitForm() {
 }
 
 form.elements.brugernavn.addEventListener("blur", checkForm);
+form.elements.email.addEventListener("blur", checkForm);
+// document.querySelector(".nextBtn").addEventListener("click", checkForm);
 
-function checkForm(spillere) {
+function checkForm() {
   console.log("blurred");
-  spillere.forEach(user => {
-    if (user.brugernavn == form.elements.brugernavn.value) {
+  allebrugere.forEach(user => {
+    if (user.brugernavn == form.elements.brugernavn.value || user.email == form.elements.email.value) {
       alert("bruger eksisterer allerede");
       //disable "videre" knappen?
     }
-  });
-
-  form.elements.email.addEventListener("blur", () => {
-    spillere.forEach(user => {
-      if (user.email == form.elements.email.value) {
-        alert("email eksisterer allerede");
-        //disable "videre" knappen?
-      }
-    });
   });
 }
 
