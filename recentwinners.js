@@ -14,13 +14,6 @@ function get() {
   })
     .then(e => e.json())
     .then(spillere => {
-<<<<<<< HEAD
-      // spillere.forEach(spiller => {
-      //   allebrugere.push(spiller);
-      // });
-      //console.log(allebrugere);
-=======
->>>>>>> 0b634ea7870c65aede8480d16dc96e54fb2f3f40
       visSpillere(spillere);
     });
 }
