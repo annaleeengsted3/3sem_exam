@@ -1,5 +1,8 @@
 "use strict";
 
+document.querySelector("#brugernavn").addEventListener("blur", checkUser);
+document.querySelector("#email").addEventListener("blur", checkEmail);
+
 function checkUser() {
   const userName = document.querySelector("form").elements.brugernavn.value;
   fetch(`https://dantoto-1f71.restdb.io/rest/brugere?q={"brugernavn": "${userName}"}`, {
