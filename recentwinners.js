@@ -1,7 +1,6 @@
 "use strict";
 
 let yesTerms = [];
-let allebrugere = [];
 
 get();
 function get() {
@@ -62,23 +61,4 @@ function visSpillere(spillere) {
     }
     // get the item and increment
   }, 3000);
-}
-
-form.elements.brugernavn.addEventListener("blur", checkForm);
-form.elements.email.addEventListener("blur", checkForm);
-// document.querySelector(".nextBtn").addEventListener("click", checkForm);
-
-function checkForm() {
-  console.log("blurred");
-  allebrugere.forEach(user => {
-    if (user.brugernavn == form.elements.brugernavn.value || user.email == form.elements.email.value) {
-      //alert("bruger eksisterer allerede");
-      //disable "videre" knappen?
-      document.querySelector(".informer").textContent = "Eksisterer allerede";
-      document.querySelector(".informer").style.color = "red";
-      document.querySelector(".nextBtn").style.backgroundColor = "gray";
-      document.querySelector(".nextBtn").disabled = true;
-    } else {
-    }
-  });
 }

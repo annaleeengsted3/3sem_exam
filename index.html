@@ -193,7 +193,7 @@
               oninput="this.className = ''"
               oninvalid="this.setCustomValidity('Du har indtastet et brugernavn der ikke stemmer overens med kravene.')"
             />
-            <span class="informer">Synligt for andre. Maks 20 karakterer.<br /><span class="small">Tilladte tegn . - _</span></span>
+            <span class="informer usercheck">Synligt for andre. Maks 20 karakterer.<br /><span class="small">Tilladte tegn . - _</span></span>
             <label for="password">Kodeord:</label>
             <input
               type="password"
@@ -210,7 +210,7 @@
           <div class="tab">
             <label for="email">E-mail:</label>
             <input id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required oninput="this.className = ''" />
-            <span class="informer">Skal være en valid e-mail addresse</span>
+            <span class="informer usercheck">Skal være en valid e-mail addresse</span>
             <label for="by">By:</label>
             <input id="by" pattern="^[a-zA-ZæøåÆØÅ]+$" required name="by" type="text" oninput="this.className = ''" />
           </div>
@@ -241,9 +241,10 @@
     </template>
 
     <script src="formscript.js"></script>
+    <script src="checkexisting.js"></script>
     <script src="signup.js"></script>
     <script src="nextrace.js"></script>
-
+    <script src="recentwinners.js"></script>
     <script src="accordion.js"></script>
     <script src="headline.js"></script>
     <!-- <script src="headline.js"></script> -->
