@@ -406,6 +406,11 @@ input.invalid {
   margin: 0 auto;
   margin-top: 2em;
 }
+
+#quickguide_container a {
+  color: var(--danOrange);
+}
+
 .submitBtn {
   opacity: 1;
 }
