@@ -90,7 +90,7 @@ function createFence(i) {
     fence.className = "fence";
     document.querySelector("#game").appendChild(fence);
     document.querySelector(".fence").style.setProperty("--speed", speed + "s");
-    addAnimation(fence);
+    removeFence(fence);
     if (i % 5 === 0) {
       //to do: add user feedback like "good job" etc, feedback that it gets harder now:
       speed = speed - 0.4;
@@ -99,7 +99,7 @@ function createFence(i) {
   }
 }
 
-function addAnimation(fence) {
+function removeFence(fence) {
   fence.addEventListener("animationend", () => {
     fence.remove();
   });
@@ -139,12 +139,9 @@ function isCollided() {
   let collided = false;
   fencesHitbox.forEach(fence => {
     const fencePos = fence.getBoundingClientRect();
-    //should work, doesn't. Måske fordi bounding rect af forhindringer er meget stor?
-    //const dx = horsePos.x + horsePos.width / 2 - fencePos.x + fencePos.width / 2;
-    //const dy = horsePos.y + horsePos.width / 2 - fencePos.y + fencePos.width / 2;
     const dx = horsePos.x - fencePos.x;
     const dy = horsePos.y - fencePos.y;
-    const distance = Math.sqrt(dx * dx + dy * dy); // Math.hypot(dx,dy)
+    const distance = Math.sqrt(dx * dx + dy * dy); // Pythagoras, same as Math.hypot(dx,dy)
 
     if (distance < horsePos.width / 2 + fencePos.width / 2 - 20) {
       console.log("COLLISION");
@@ -208,3 +205,7 @@ function gameOver() {
     location.reload();
   });
 }
+
+//should work, doesn't. Måske fordi bounding rect af forhindringer er meget stor?
+//const dx = horsePos.x + horsePos.width / 2 - fencePos.x + fencePos.width / 2;
+//const dy = horsePos.y + horsePos.width / 2 - fencePos.y + fencePos.width / 2;

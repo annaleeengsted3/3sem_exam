@@ -1,7 +1,8 @@
 "use strict";
-get();
-let yesTerms = [];
 
+let yesTerms = [];
+let allebrugere;
+get();
 function get() {
   fetch("https://dantoto-1f71.restdb.io/rest/brugere", {
     method: "get",
@@ -13,6 +14,7 @@ function get() {
   })
     .then(e => e.json())
     .then(spillere => {
+      checkForm(spillere);
       visSpillere(spillere);
     });
 }
@@ -35,7 +37,6 @@ function visSpillere(spillere) {
   document.querySelectorAll(".gevinst").forEach(div => {
     div.innerHTML = vinder1.kr_vundet;
   });
-  console.log(yesTerms);
   setInterval(function() {
     const vinder = yesTerms[i];
     // setInterval makes it run repeatedly
@@ -57,4 +58,65 @@ function visSpillere(spillere) {
     }
     // get the item and increment
   }, 3000);
+}
+
+//Make a new user when clicking submit
+const form = document.querySelector("form");
+
+function submitForm() {
+  form.addEventListener("submit", evt => {
+    evt.preventDefault();
+    //   const boxes = Array.from(form.querySelectorAll("[type=checkbox]:checked"));
+    //   const nice = boxes.map(el => {
+    //     return el.value;
+    //   });
+    let userObject = {
+      brugernavn: form.elements.brugernavn.value,
+      email: form.elements.email.value,
+      password: form.elements.password.value,
+      by: form.elements.by.value,
+      terms: form.elements.terms.checked,
+      kr_vundet: 0
+    };
+    post(userObject);
+    form.reset();
+  });
+}
+
+form.elements.brugernavn.addEventListener("blur", checkForm);
+
+function checkForm(spillere) {
+  console.log("blurred");
+  spillere.forEach(user => {
+    if (user.brugernavn == form.elements.brugernavn.value) {
+      alert("bruger eksisterer allerede");
+      //disable "videre" knappen?
+    }
+  });
+
+  form.elements.email.addEventListener("blur", () => {
+    spillere.forEach(user => {
+      if (user.email == form.elements.email.value) {
+        alert("email eksisterer allerede");
+        //disable "videre" knappen?
+      }
+    });
+  });
+}
+
+function post(data) {
+  const postData = JSON.stringify(data);
+  fetch("https://dantoto-1f71.restdb.io/rest/brugere", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "x-apikey": "5dea0bc34658275ac9dc23ad",
+      "cache-control": "no-cache"
+    },
+    body: postData
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+    });
 }
